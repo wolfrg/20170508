@@ -1,8 +1,7 @@
-
 #coding:utf8
 '''
 Created on 2017年5月5日
-
+这个脚本是用来解析域名的IP
 @author: Ops
 '''
 import dns.resolver
