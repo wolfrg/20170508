@@ -5,7 +5,7 @@ Created on 2017年5月5日
 @author: Ops
 '''
 import dns.resolver
-import os
+#import os
 import httplib
 
 iplist=[]    #定义一个域名IP列表变量
@@ -46,12 +46,11 @@ def checkip(ip):
             print ip+" [OK]"
             
         else:
-            print ip+" [Error]"
+            print ip+" [有跳转，没关系。]"
             
 if __name__=="__main__":
     if get_iplist(appdomain) and len(iplist) >0:
         for ip in iplist:
-            checkip(ip)
-            
+            checkip(ip)        
     else:
         print "dns resolver error."                        
