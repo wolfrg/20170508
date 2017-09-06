@@ -23,6 +23,7 @@ def my_rsync(p,filename):
         jsonDir=os.path.join(srcname,'package.json')  #遍历包含package.json的目录
         if os.path.isfile(jsonDir):
             #print(srcname + "目录：存在package.json文件")
+            print(jsonDir)
             with open('package.json','r') as f:
                 lines = f.read(-1) 
                 try:
