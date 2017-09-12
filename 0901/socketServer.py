@@ -26,6 +26,9 @@ while True:
     accept_data = str(conn.recv(1024),encoding="utf8")
     lines = accept_data.split('\n')[0]
     #print(lines)
+    if len(accept_data) <3:
+        continue
+        
     
     #向浏览器发送http头
     send_data = 'HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\n\r\n'
