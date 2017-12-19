@@ -12,7 +12,6 @@ p = 'F:\\MyEclipse\\20170508'
 pdir = os.listdir(p)
 
 sk = socket.socket()
-
 sk.bind(('127.0.0.1',8080))
 sk.listen(1024)
 print('http://localhost:8080/')

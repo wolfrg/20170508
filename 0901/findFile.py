@@ -17,9 +17,10 @@ def find_files(path,wanted):
 
             elif os.path.isfile(new_path):
                 if wanted.lower() in filename.lower():
+                    #print(filename)
                     print(new_path)    
     except Exception as e:
         raise e
 
 
-find_files('F:\\Python\\spa','txt')
+find_files('F:\\Python\\spa','mp4')

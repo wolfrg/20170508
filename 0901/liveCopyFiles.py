@@ -10,10 +10,7 @@ from shutil import ignore_patterns, copystat, copy2, Error
 
 #复制的函数
 def copytree(src, dst, ignore=ignore_patterns('*.properties')):
-    
-    
     names = os.listdir(src)
-    
     #得到源目录的文件
     #print src
     #print names

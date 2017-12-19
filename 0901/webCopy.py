@@ -74,7 +74,7 @@ while True:
         if(filenameOld[1:]==filename or filenameOld[1:]=='_all'):
             cpfile( p,filename )
 
-    data='';
+    data=''
     for filename in eddir:
         if filename[0]!='.' and os.path.isdir(p+'/'+filename):
             data+='<a href="'+filename+'">'+filename+'</a> <br>'

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Wolfrg的博客{% endblock %}
+
+{% block content %}
+<div class="row text-center vertical-middle-sm">
+	<h1>Wolfrg的博客</h1>
+</div>
+
+<div class="row"> 
+	<div class="col-xs-12 col-md-8">
+		<ul>
+			{% for blog in blogs %}
+				<li><a href="{{blog.id}}">{{ blog.title }}</a></li>
+			{% endfor %}	
+		</ul>
+	</div>
+	<div class="col-xs-6 col-md-4">
+		<h2>广告</h2>
+		<p> 跟老齐学：www.itdiffer.com</p>
+		<img width="200px" src="https://img.alicdn.com/bao/uploaded/i4/1932014659/TB11recp50TMKJjSZFNXXa_1FXa_!!0-item_pic.jpg_430x430q90.jpg">
+		
+	</div>
+	
+</div>
+
+{% endblock %}

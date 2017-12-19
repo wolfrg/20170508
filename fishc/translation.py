@@ -1,15 +1,23 @@
 #coding:utf8
+'''
+Created on 2017年7月28日
+
+@author: Ops
+'''
+
+
 import urllib.request
 import urllib.parse
 import json
 
-#content = input("请输入要翻译的内容：")
-url ="http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule&sessionFrom=null"
+content = input("请输入要翻译的内容：")
+url ="http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule&sessionFrom=http://www.youdao.com"
 
 #创建字典存放表单数据
 data = {}
 
-data['i']='啊'
+data['i']=content
+#data['i']='啊'
 data['from']='AUTO'
 data['to']='AUTO'
 data['smartresult']='dict'
@@ -26,4 +34,6 @@ data = urllib.parse.urlencode(data).encode('utf-8')
 response = urllib.request.urlopen(url,data)
 
 html = response.read().decode('utf-8')
-print(html)
+target = json.loads(html)
+#print(html)
+print("翻译结果：%s" %(target['translateResult'][0][0]['tgt']))
