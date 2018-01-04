@@ -28,7 +28,7 @@ end = len(L) -1
 while start <= end:
     hkey = int(raw_input("输入你要查找的数："))
     print "要查找的数：%d " % hkey
-    mid = start + (end - start)/2
+    mid = start + (end - start) / 2
     print "中间的数：%d" % mid
     #hkey = int(raw_input("输入你要查找的数："))
     if L[mid] == hkey:
