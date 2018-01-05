@@ -1,4 +1,4 @@
-#encoding:utf8
+#coding:utf8
 #author:wolfrg
 #date:20180103
 #func:二分查找

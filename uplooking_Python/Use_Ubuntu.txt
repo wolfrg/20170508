@@ -1,0 +1,9 @@
+pip加速：
+没有就创建：~/.pip/pip.conf
+[global]
+index-url = https://mirrors.aliyun.com/pypi/simple
+[install]
+trusted-host=mirrors.aliyun.com
+
+apt-get 加速：
+https://www.centos.bz/2017/08/ubuntu-16-04-apt-fast-speed-apt-get/
