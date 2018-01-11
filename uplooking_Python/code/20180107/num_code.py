@@ -17,4 +17,4 @@ for root,dirs,files in os.walk('/home/f/mysite'):
                     num_comments += 1
                 else:
                     num_lines += 1
-        print num_lines,num_null,num_comments
+        print "file %s: 代码 %d行，空行 %d,注释 %d" % (fname,num_lines,num_null,num_comments)
