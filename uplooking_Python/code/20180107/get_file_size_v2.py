@@ -3,14 +3,14 @@ import os
 
 from os.path import join,getsize
 
-for root,dirs,files in os.walk('/home/f/test'):
+for root,dirs,files in os.walk('/home/f/mysite'):
    # print root,
    # print dirs,
    # print files
 
     for file in files:
-        filepath = os.path.join(root,file)
-        print filepath
+        files= os.path.join(root,file)
+        print files
 
-        size = getsize(filepath)
+        size = getsize(files)
         print size

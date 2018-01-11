@@ -16,12 +16,13 @@ with open("./filtered_words.txt","r+") as f :
 
    # 方法二：
     for words in mgc:
-        new_mgc = words.strip('\n')
+        new_mgc = words.strip()
         if not words.strip():
             continue
         if words:
             if new_mgc in user_input:
                 user_input  = user_input.replace(new_mgc,"**")
 print user_input
+
 
 
