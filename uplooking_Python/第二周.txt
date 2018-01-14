@@ -7,3 +7,6 @@ os.path
 查看python源码
 
 subprocess
+
+f.tell()
+
