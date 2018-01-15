@@ -18,6 +18,7 @@ with open("./filtered_words.txt","r+") as f :
     for words in mgc:
         new_mgc = words.strip()
         if not words.strip():
+        #if words in ['\n','\r\n']:
             continue
         if words:
             if new_mgc in user_input:
