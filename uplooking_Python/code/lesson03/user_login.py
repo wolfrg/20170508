@@ -11,6 +11,7 @@ def user_login():
         password = raw_input("请输入密码：")
         if users[username] == password:
             print "登录成功"
+            change_password(username)
     else:
         print "用户不存在，请注册"
         user_register()   #调用注册的函数
@@ -44,7 +45,7 @@ def change_password(username):
 
 def main():
     user_login()
-   #user_register()
+    #user_register()  #17行调用了该函数，此处就不能再调用了
     user_login()
 
 
