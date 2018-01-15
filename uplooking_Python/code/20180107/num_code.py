@@ -1,7 +1,7 @@
 #coding:utf8
 import os
 
-for root,dirs,files in os.walk('/home/f/mysite'):
+for root,dirs,files in os.walk('/home/f/20170508/uplooking_Python'):
     for file in files:
         fname = os.path.join(root,file)
 
