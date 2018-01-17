@@ -25,10 +25,14 @@ def user_register():
 
     #注册的时候增加一个判断：判断用户是否已经被注册
     username = raw_input("请输入用户名：")
-    password = raw_input("请输入密码：")
-    users[username] = password
-    print users
-    print "恭喜您，注册成功！"
+    if username not in users:
+        password = raw_input("请输入密码：")
+        users[username] = password
+        print users
+        print "恭喜您，注册成功！"
+    else :
+        username = raw_input("用户名已经被注册，请注册一个别的：")
+        user_register()
     user_login()
 
 
