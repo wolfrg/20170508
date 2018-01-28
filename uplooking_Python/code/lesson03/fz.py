@@ -7,7 +7,7 @@ def _print_one_(self):
 
 class A(object):
 
-    __var2__ = 'double'
+    __var2 = 'double'
 
     def __print_two__(self):
         print "双下划线"
@@ -15,7 +15,7 @@ class A(object):
 if __name__ == "__main__":
     a = A()
     #a._var1_
-    print a.__var2__
+    print a.__var2
     #a._print_one_()
     #a.__print_two__()
 
