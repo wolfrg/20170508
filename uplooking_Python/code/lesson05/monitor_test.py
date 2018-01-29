@@ -3,13 +3,12 @@
 
 import commands
 import re
-import time
 import datetime
 #from datetime import datetime
 
 def get_register_time():
 
-    reg = r'Registration\sTime:(\s\d{4}-\d{2}-\d{2})'
+    reg = r'Registration\sTime:\s(\d{4}-\d{2}-\d{2})'
     status,register = commands.getstatusoutput('whois gaiay.net.cn')
     if status == 0:
         register = re.search(reg,register).group(1)
@@ -18,7 +17,7 @@ def get_register_time():
 
 def get_expire_time():
 
-    reg = r'Expiration\sTime:(\s\d{4}-\d{2}-\d{2})'
+    reg = r'Expiration\sTime:\s(\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2})'
     status,output = commands.getstatusoutput('whois gaiay.net.cn')
     if status == 0:
         expire = re.search(reg,output).group(1)
@@ -41,14 +40,15 @@ def get_update_time():
 
 domain_name='gaiay.net.cn'
 expire_time = get_expire_time()
+expire_time = expire_time
 register = get_register_time()
-today = datetime.date.today()
-
-#print date_time
-#days = (expire_time - today).days
-#print today #这个日期格式为：2018-01-29
-
-#today = today.replace('-',',')
+now = datetime.datetime.now()
+today = now.strftime('%Y-%m-%d %H:%M:%S')
+d2 = datetime.datetime.strptime(expire_time,'%Y-%m-%d %H:%M:%S')
+d1 = datetime.datetime.strptime(today,'%Y-%m-%d %H:%M:%S')
+delta = d2-d1
+#print "域名还有%s天有效" % delta.days
+#print type(expire_time)
 #print today
-print "域名：%s,注册时间：%s,到期时间：%s"% (domain_name,register,expire_time)
+print "域名：%s,注册时间：%s,到期时间：%s,截止目前域名有效天数还剩%s天"% (domain_name,register,expire_time,delta.days)
 #print "域名：%s，到期时间：%s"% (domain_name,expire_time)
