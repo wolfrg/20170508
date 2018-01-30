@@ -9,6 +9,3 @@ def sys_call(cmd):
         return output
 
 
-#if __name__== "__main__":
-#    for ex in exprie_domains:
-#        sys_call(ex)

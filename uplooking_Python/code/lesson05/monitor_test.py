@@ -1,5 +1,5 @@
 #coding:utf8
-#监控域名
+#监控域名到期时间
 
 import commands
 import re
@@ -36,16 +36,15 @@ def get_update_time():
 def get_days():
 
     domain_name='gaiay.net.cn'
-    expire_time = get_expire_time()
-    #expire_time = expire_time
-    register = get_register_time()
-    now = datetime.datetime.now()
+    expire_time = get_expire_time()  #调用域名到期时间的函数
+    register = get_register_time()   #调用获取注册时间的函数
+    now = datetime.datetime.now()    #获取当前的时间
     today = now.strftime('%Y-%m-%d %H:%M:%S')
-    d2 = datetime.datetime.strptime(expire_time,'%Y-%m-%d %H:%M:%S')
-    d1 = datetime.datetime.strptime(today,'%Y-%m-%d %H:%M:%S')
-    #print d2
-    #print d1
-    delta = (d2-d1).days
+    expire_day = datetime.datetime.strptime(expire_time,'%Y-%m-%d %H:%M:%S')
+    today = datetime.datetime.strptime(today,'%Y-%m-%d %H:%M:%S')
+    #print expire_day
+    #print today
+    delta = (expire_day-today).days
     print "域名：%s,注册时间：%s,到期时间：%s,截止目前域名有效天数还剩%s天"% (domain_name,register,expire_time,delta)
 
 
