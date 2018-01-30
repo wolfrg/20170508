@@ -37,16 +37,18 @@ def get_days():
 
     domain_name='gaiay.net.cn'
     expire_time = get_expire_time()
-    expire_time = expire_time
+    #expire_time = expire_time
     register = get_register_time()
     now = datetime.datetime.now()
     today = now.strftime('%Y-%m-%d %H:%M:%S')
     d2 = datetime.datetime.strptime(expire_time,'%Y-%m-%d %H:%M:%S')
     d1 = datetime.datetime.strptime(today,'%Y-%m-%d %H:%M:%S')
-    delta = d2-d1
-    print "域名：%s,注册时间：%s,到期时间：%s,截止目前域名有效天数还剩%s天"% (domain_name,register,expire_time,delta.days)
+    #print d2
+    #print d1
+    delta = (d2-d1).days
+    print "域名：%s,注册时间：%s,到期时间：%s,截止目前域名有效天数还剩%s天"% (domain_name,register,expire_time,delta)
 
 
-
-get_days()
+if __name__ == '__main__':
+    get_days()
 
