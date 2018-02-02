@@ -4,6 +4,7 @@ exprie_domains = [
         'bigvyy.cn',
         'bivyy.xyz',
         'mi-idc.commiui.com',
+        'gaiay.net.cn',
         'miliao.com',
         'tjqonline.cn',
         'xiaomi.tw',

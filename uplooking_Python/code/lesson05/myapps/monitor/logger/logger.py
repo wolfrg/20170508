@@ -1,6 +1,8 @@
 #coding:utf8
 #logger.py
 #处理日志的模块
+import logging
+from conf.config import app_log_path
 
 def get_formatter():
     fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -19,4 +21,4 @@ def get_logger(logger_name):
     return logger
 
 
-app_logger = get_logger("monitor_domain")
+#app_logger = get_logger("monitor_domain")

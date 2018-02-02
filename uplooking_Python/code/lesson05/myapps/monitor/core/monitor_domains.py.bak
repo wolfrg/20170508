@@ -5,7 +5,6 @@ from utils.whois_commands import sys_call
 from utils.expire_time import expire_time
 from utils.register_time import register_time
 from utils.expire_days import expire_days
-from logger.logger import get_logger
 
 class Monitor_Domain(object):
 
@@ -42,13 +41,11 @@ class Monitor_Domain(object):
 
 if __name__ == '__main__':
     md = Monitor_Domain()
-    logger = get_logger("whois domains")
+    #logger = get_logger("domains")
     for domain in exprie_domains:
         md.whois(domain)
         r_time = md.get_register_time()
         e_time = md.get_expire_time()
         my_days = md.get_expire_days()
-        if e_time == None:
-            logger.info("没查到 %s的有效信息."%(domain))
         print "==================================================================================="
         print "域名：%s,注册时间：%s,到期时间：%s,到期天数：%s天" % (domain,r_time,e_time,my_days)

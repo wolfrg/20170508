@@ -6,7 +6,13 @@
 register_reg = [
 
             r'Updated\sDate:\s(\d{4}-\d{2}-\d{2})',
-
+            r'Registration Time:\s(\d{4}-\d{2}-\d{2})',
+            r'Creation Date:\s(\d{4}\-\d{2}\-\d{2})',
+            r'Record created on\s(\d{4}\-\d{2}\-\d{2})',
+            r'Creation Date:\s(\d{4}\-\d{2}\-\d{2})',
+            r'Creation Date:\s{2}(\d{2}\-\S{3}\-\d{4})',
+            r'Domain Name Commencement Date:\s(\d{2}-\d{2}\-\d{4})',
+            r'created:\s\s{4}(\d{2}\/\d{2}\/\d{4})',
                ]
 
 
