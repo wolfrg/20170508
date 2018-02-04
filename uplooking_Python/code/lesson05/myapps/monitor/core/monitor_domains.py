@@ -11,6 +11,7 @@ class Monitor_Domain(object):
 
     def __init__(self):
         self.info = None
+        self.domain_name = None
 
     def whois(self,domain_name):
         cmd = "whois %s" % domain_name

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 exprie_domains = [
+        #'google.com.sg',
         'bigvyy.cn',
         'bivyy.xyz',
         'mi-idc.commiui.com',
