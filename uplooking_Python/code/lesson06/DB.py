@@ -13,8 +13,8 @@ class DB(object):
             host = '127.0.0.1',
             port = 3306,
             user = 'root',
-            passwd = '123456',
-            db = 'python_test',
+            passwd = '123321',
+            db = 'test'gg,
             connect_timeout = 10,
             charset = 'utf8'
         )
@@ -67,9 +67,9 @@ class HANDELDB(DB):
 
 if __name__ == '__main__':
     use_db = HANDELDB()
-    insert_sql = "insert into frg values(4,'zjq')"
-    select_sql =  'select * from  python_test.frg'
+    #insert_sql = "insert into frg values(4,'zjq')"
+    select_sql =  'select * from  test.frg'
 
     select = use_db.select(select_sql)
-    use_db.insert(insert_sql)
+    #use_db.insert(insert_sql)
     print select
