@@ -10,7 +10,6 @@ for root,dirs,files in os.walk('/home/f/mysite'):
 
     for file in files:
         files= os.path.join(root,file)
-        print files
-
+        #print files
         size = getsize(files)
-        print size
+        print files,size

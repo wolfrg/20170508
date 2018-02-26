@@ -3,7 +3,6 @@ from core.monitor_domains import Monitor_Domain
 from logger.logger import get_logger
 from conf.exprie_domains  import exprie_domains
 
-
 def main():
     md = Monitor_Domain()
     logger = get_logger("whois domains")
