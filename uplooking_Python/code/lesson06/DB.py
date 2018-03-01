@@ -14,7 +14,7 @@ class DB(object):
             port = 3306,
             user = 'root',
             passwd = '123321',
-            db = 'test'gg,
+            db = 'test',
             connect_timeout = 10,
             charset = 'utf8'
         )
