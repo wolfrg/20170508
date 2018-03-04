@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*ul li:first-child{color: #00b1ff}*/
+        /*ul li:last-child{color: red;}*/
+        /*ul li:nth-child(odd){background-color: aquamarine}*/
+        /*ul li:nth-child(even){background-color: #00b1ff}*/
+        /*ul li:nth-child(4){background-color: aquamarine}*/
+
+        /*input:checked{color: aqua}*/
+
+        ul li:not(:first-child){
+            background-color: #00b1ff;
+        }
+
+
+    </style>
+</head>
+<body>
+:first-child :选择第一个子元素
+:last-child :最后一个
+:nth-child:按照括号中的条件进行选择
+odd是奇数项
+even是偶数项
+<ul class="" id="">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+
+
+伪类选择符：
+:checked 选择已经被选择的元素
+:not 不选择该元素，即选择除了该元素的所有其它元素
+<input  type="radio" value="3434" checked="checked"/>1
+<input  type="radio" value="3434" checked/>2
+<input  type="checkbox" value="3434" />3
+<input  type="checkbox" value="3434" />4
+</body>
+</html>

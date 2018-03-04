@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>login</title>
+
+    <style>
+        label{
+            width:100px;
+            /* text-align: right; */
+            display: inline-block;
+        }
+
+        .outer1 > .sub1{width: 200px;height: 200px;border: 1px solid red}
+        .outer1 .sub1{width:200px;height: 200px;border: 1px solid blue}
+
+        /* ul li:first-child{color: chartreuse} */
+        ul li:nth-child(odd){background-color: chartreuse}
+        ul li:nth-child(even){background-color: darkmagenta}
+    </style>
+
+</head>
+<body>
+    <h1>
+      Hello Login
+    </h1>
+    <form action="">
+        <label for="username">用户名：</label>
+        <input type="text" id="username" name="username" value="username"> <br>
+
+        <label for="password">密码：</label>
+        <input type="password" id="password" name="password" value="password"> <br>
+
+        <input type="submit" value="提交">
+
+    </form>
+
+    <!-- <div></div>
+
+        <div class="outer1">
+            <p>这是outer1</p>
+            <div></div>
+            <div class="sub1">
+                这是subl1,使用类选择符：.选择符名字
+                <div class="sub2"></div>
+                <div class="sub1">aaa</div>
+            </div>
+        </div> -->
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <input type="radio" value="3333" checked>1
+    <input type="radio" value="3434" checked>2
+    <input type="checkbox" value="3333">3
+    <input type="checkbox" value="">4
+</body>
+</html>

@@ -67,9 +67,9 @@ class HANDELDB(DB):
 
 if __name__ == '__main__':
     use_db = HANDELDB()
-    #insert_sql = "insert into frg values(4,'zjq')"
+    insert_sql = "insert into frg values(4,'zjq')"
     select_sql =  'select * from  test.frg'
 
     select = use_db.select(select_sql)
-    #use_db.insert(insert_sql)
+    use_db.insert(insert_sql)
     print select

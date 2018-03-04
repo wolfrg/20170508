@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .table{
+            width: 870px;
+        }
+        .row-list-item div{
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .table .row-list-item{
+            border-bottom: 1px solid #ddd;
+        }
+        .table .row-list-item:first-child{
+            border-bottom: 2px solid #ddd;
+            font-weight: bolder;
+        }
+        .table .row-list-item:nth-child(2){
+            background-color: #f5f5f5;
+        }
+        .table .row-list-item:nth-child(4){
+            background-color: #e0f0d8;
+        }
+        .table .row-list-item:nth-child(6){
+            background-color: #daedf7;
+        }
+        .table .row-list-item:nth-child(8){
+            background-color: #fcf8e4;
+        }
+        .table .row-list-item:nth-child(10){
+            background-color: #f3dfde;
+        }
+
+        .row-list-item .row-col-1{
+            width: 8%;
+            overflow: hidden;
+        }
+        .row-list-item .row-col-2{
+            width: 30%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .row-list-item .row-col-3{
+            width: 30%;
+            overflow: hidden;
+        }
+        .row-list-item .row-col-4{
+            width: 30%;
+            overflow: hidden;
+        }
+
+        .row-list-item div:nth-child(1){
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+<img src="./table.png" alt=""/>
+
+<div class="table">
+    <div class="row-list-item ">
+        <div class="row-col-1 id-strong">#</div>
+        <div class="row-col-2">名称</div>
+        <div class="row-col-3">年龄</div>
+        <div class="row-col-4">成绩</div>
+    </div>
+    <div class="row-list-item">
+        <div class="row-col-1  id-strong">1</div>
+        <div class="row-col-2">王雪君</div>
+        <div class="row-col-3">66</div>
+        <div class="row-col-4">100</div>
+    </div>
+    <div class="row-list-item">
+        <div class="row-col-1  id-strong">2</div>
+        <div class="row-col-2">王雪君</div>
+        <div class="row-col-3">66</div>
+        <div class="row-col-4">100</div>
+    </div>
+    <div class="row-list-item">
+        <div class="row-col-1  id-strong">3</div>
+        <div class="row-col-2">王雪君</div>
+        <div class="row-col-3">66</div>
+        <div class="row-col-4">100</div>
+    </div>
+    <div class="row-list-item">
+        <div class="row-col-1  id-strong">4</div>
+        <div class="row-col-2">王雪君</div>
+        <div class="row-col-3">66</div>
+        <div class="row-col-4">100</div>
+    </div>
+    <div class="row-list-item">
+        <div class="row-col-1  id-strong">5</div>
+        <div class="row-col-2">王雪君</div>
+        <div class="row-col-3">66</div>
+        <div class="row-col-4">100</div>
+    </div>
+    <div class="row-list-item">
+        <div class="row-col-1  id-strong">6</div>
+        <div class="row-col-2">王雪君</div>
+        <div class="row-col-3">66</div>
+        <div class="row-col-4">100</div>
+    </div>
+    <div class="row-list-item">
+        <div class="row-col-1  id-strong">7</div>
+        <div class="row-col-2">王雪君</div>
+        <div class="row-col-3">66</div>
+        <div class="row-col-4">100</div>
+    </div>
+    <div class="row-list-item">
+        <div class="row-col-1  id-strong">8</div>
+        <div class="row-col-2">王雪君</div>
+        <div class="row-col-3">66</div>
+        <div class="row-col-4">100</div>
+    </div>
+    <div class="row-list-item">
+        <div class="row-col-1  id-strong">9</div>
+        <div class="row-col-2">王雪君</div>
+        <div class="row-col-3">66</div>
+        <div class="row-col-4">100</div>
+    </div>
+</div>
+
+
+<table border="1" width="800px" style="margin-top: 50px;">
+    <thead>
+      <tr>
+          <th>#</th>
+          <th>name</th>
+          <th>age</th>
+          <th>score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>1</td>
+          <td>wangxuejun</td>
+          <td>66</td>
+          <td>100</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>wangxuejun</td>
+          <td>66</td>
+          <td>100</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>wangxuejun</td>
+          <td>66</td>
+          <td>100</td>
+      </tr>
+      <tr>
+          <td>1</td>
+          <td>wangxuejun</td>
+          <td>66</td>
+          <td>100</td>
+      </tr>
+    </tbody>
+</table>
+
+
+超出显示省略号：
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+
+
+</body>
+</html>

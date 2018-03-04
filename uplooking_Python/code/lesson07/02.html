@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*div{width:200px;height: 20px;background: #00b1ff}*/
+        /*p{color:#00b1ff;}*/
+
+        /*.odiv{width:200px;height: 20px;background:lime;display: block;}*/
+        /*#oidv1{width:200px;height: 20px;background:orange;display: block;}*/
+        .outer1 > .sub1{width:200px;height: 200px;border:1px solid cadetblue;display: block;}
+        .outer1 .sub1{width:200px;height: 40px;border:1px solid blue;display: block;}
+
+    </style>
+</head>
+<body>
+1.样式的构成：选择符和样式
+2.选择符：
+标签选择
+<div></div>
+<p>4343544543</p>
+<p>4436546456</p>
+----------------------
+类选择
+<div class="odiv"></div>
+<span class="odiv"></span>
+
+----------------------
+id选择符(id选择符是唯一的，每一个id的名称必须不同)
+<div id="oidv1"></div>
+
+----------------------
+
+子元素选择
+有两种：
+1.只选中第一级子元素使用符号 >
+2.选择所有后代元素， 使用空格隔开
+<div class="outer1">
+    <div></div>
+    <div class="sub1">
+        <div class="sub2"></div>
+        <div class="sub1"></div>
+    </div>
+</div>
+
+</body>
+</html>
