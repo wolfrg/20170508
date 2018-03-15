@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .table{
+            width: 900px;
+            height: auto;
+        }
+        .list-row div{
+            display: inline-block;
+        }
+        .list-row:nth-child(odd){
+            background-color: aqua;
+        }
+        .list-row:nth-child(even){
+            background-color: antiquewhite;
+        }
+        .list-row .col-1{
+            width: 20%;
+            overflow: hidden;
+        }
+        .list-row .col-2{
+            width: 30%;
+            overflow: hidden;
+        }
+        .list-row .col-3{
+            width: 20%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+1.$.get(url, data, function(res){}, "json");
+<div class="table">
+
+</div>
+
+</body>
+</html>
+<script src="jquery.min.js"></script>
+<script>
+var url="http://suggest.taobao.com/sug?code=utf-8&q=a&callback=cb"
+
+$.getJSON('./table.json', function(response){
+    if(response.code == 0){
+        var data = response.data.list,
+                str = '';
+
+        $.each(data, function(index, value){
+            str += '<div class="list-row">\
+                        <div class="col-1">'+value.domain_cname+'</div>\
+                        <div class="col-2">'+value.createTime+'</div>\
+                        <div class="col-2">'+value.customer_user_id+'</div>\
+                    </div>'
+        })
+
+        $('.table').html(str);
+    }
+})
+
+</script>
