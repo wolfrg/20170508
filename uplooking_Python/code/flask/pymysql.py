@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 import MySQLdb
 
-db = MySQLdb.connect("localhost", "root", "123321", "python01")
+db = MySQLdb.connect("localhost", "root", "123321", "python01",charset='utf8')
 app = Flask(__name__)
 
 @app.route('/')
