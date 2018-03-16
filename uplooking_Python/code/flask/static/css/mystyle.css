@@ -1,0 +1,37 @@
+.mydiv {
+    width:85%;
+    height: 40px;
+    line-height: 30px;
+    text-align: center;
+} 
+
+.col-list-1{
+width: 4%;
+display: inline-block;
+}
+
+.col-list-2, .col-list-3, .col-list-4, .col-list-5, .col-list-6{
+width: 15%;
+display: inline-block;
+}
+
+.row-list-item {
+border-bottom: 1px solid #ddd;
+}
+
+.row-list-item:first-child {
+border-bottom:2px solid #ddd;
+font-weight: bolder;
+}
+
+.row-list-item:nth-child(2) {
+background-color: #f5f5f5;
+}
+
+.row-list-item:nth-child(4) {
+background-color:#e0f0d8;
+}
+
+.row-list-item:nth-child(6) {
+background-color: #daedf7;
+}
