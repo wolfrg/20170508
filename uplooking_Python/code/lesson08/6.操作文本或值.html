@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+1.html
+<div class="odiv">
+    <div class="sub1">1
+        <div class="sub11">11</div>
+    </div>
+</div>
+</body>
+</html>
+2.text
+<div class="odiv2">1233</div>
+
+3.val()
+<input class="ipt" type="text" value="wangxuejun"/>
+<script src="jquery.min.js"></script>
+<script>
+var str = $('.odiv').html();
+    console.log(str);
+
+var str = '<span>123</span>'
+    $('.odiv').html(str);
+
+var text = $('.odiv2').text();
+    console.log(text);
+var text2=$('.odiv2').text('aaa');
+    console.log(text2)
+
+    var input = $('.ipt').val()
+    console.log(input)
+var input1 = $('.ipt').val(666)
+console.log(input1)
+</script>

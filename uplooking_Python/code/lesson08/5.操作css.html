@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .odiv{
+            width: 200px;
+            height: 50px;
+        }
+        .bg{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+<button class="obtn">ok</button>
+<div class="odiv">
+
+</div>
+</body>
+</html>
+<script src="jquery.min.js"></script>
+<script>
+    // toggleClass 交替添加或删除类
+    $('.obtn').on('click', function(){
+        $('.odiv').toggleClass('bg');
+    })
+</script>

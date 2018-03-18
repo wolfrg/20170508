@@ -1,0 +1,106 @@
+/*css reset*/
+html, body {
+    /*font: 12px/1.5 "Microsoft YaHei", tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;*/
+    font: 12px/1.5 PingFang SC,Lantinghei SC,Helvetica Neue,Helvetica,Arial,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,STHeitiSC-Light,simsun,\\5B8B\4F53,WenQuanYi Zen Hei,WenQuanYi Micro Hei,'sans-serif';
+    height: 100%;
+    overflow-y: hidden;
+    color: #000;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset, img {border: 0;}
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+ul,ol {list-style: none;}
+caption,th {text-align: left;}
+h1,h2,h3,h4,h5,h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+abbr, acronym {
+    border: 0;
+    font-variant: normal;
+}
+/*a{color:#fff;}*/
+a:link,a:hover,a:active{
+    text-decoration:none;
+    /*color:#fff;*/
+}
+a:link,a:hover,a:active{outline:0 none;}
+textarea{resize: none;}
+input,textarea,select{
+    outline: none;
+}
+
+
+/* bootstrap reset */
+.container-fluid {padding: 0;}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{padding: 0px;}
+.row {margin:0;}
+.form-horizontal .form-group {margin-left: 0; margin-right: 0;}
+.dropdown-menu {padding: 0;}
+.help-block {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: left;
+    color: #C6310E;
+}
+.form-group {margin: 0px;}
+.form-control {color: #fff;font-size: 12px;}
+
+
+/* layout */
+/*ͷ������ʽ��һ�����ø߶Ⱥ�������һ���и�*/
+.sys-head{
+    height: 65px;
+    line-height: 65px;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0 10px;
+    font-size: 12px;
+}
+/*��ͷ�������е�div���һ����ʾ*/
+.sys-head div{
+    display: inline-block;
+}
+/*��logo���ÿ��*/
+.sys-logo{
+    width: 40px;
+}
+/*���û���Ϣ���˳���ť�Ҹ���*/
+.head-right{
+    float: right;
+}
+.user-info img{
+    width: 20px;
+}
+/*�����˳���ť������û����Ƶļ����С�ֿɵ��ͼ��*/
+.exit{
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.main-area{
+    margin-top: 40px;
+
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
+    background-color: #00b1ff;
+}
+.main-menu{
+    background-color: #f5f5f5;
+}
+.sub-menu{
+    margin-top: 15px;
+}
+.sub-menu , .table-panel{
+    background-color: #f3f3f3;
+}

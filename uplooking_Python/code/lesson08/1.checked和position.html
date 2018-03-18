@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input:checked+span{
+            color: yellow;
+        }
+        #sex{
+            margin-bottom: 100px;
+        }
+        .odiv1{
+            width:200px;
+            height:100px;
+            background: green;
+            position: relative;
+        }
+        .sub1{
+            width:150px;
+            height:80px;
+            background: yellowgreen;
+            position: relative;
+            top:10px;
+        }
+        .odiv2{
+            width:100px;
+            height:50px;
+            background: red;
+            position: absolute;
+            top: 30px;
+            left: 20px;
+        }
+    </style>
+
+</head>
+<body>
+a.:checked伪类
+<input type="radio"/><span>name</span>
+<input id="sex" type="checkbox"/><span>sex</span><br/>
+
+b.定位position
+1.staic
+2.relative
+<div class="odiv1">
+    <div class="sub1">
+
+    </div>
+</div>
+<div class="odiv2">
+
+</div>
+
+3.absolute
+
+</body>
+</html>

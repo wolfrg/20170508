@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bootstrap</title>
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+</head>
+<body>
+       
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">Profile</a></li>
+        <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
+
+    
+
+    <form action="">
+        <div class="form-group">
+            <label for="example">Email address</label>
+            <input type="email" class="form-control" id="example" placeholder="Email">
+        </div>
+
+        <div class="form-group">
+            <label for="examplep1">Password</label>
+            <input type="password" class="form-control" id="examplep1" placeholder="Password ">
+
+        </div>
+        <div></div>
+    </form>
+    
+    <button type="button"  class="btn btn-danger btn-lg">ok</button>
+    <br>
+================================================================= <br>
+    模态框 <br>
+
+    <div>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">ok模态框</button>
+
+        <div class="modal fade" id="myModal" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+
+                        </div>
+
+                        <div class="modal-body">
+                               给你点提示
+                        </div>
+                            
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                </div>      
+            </div>          
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
