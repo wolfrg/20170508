@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>my monitor index</title>
+
+    <link rel="icon" href="img/monitor-logo.png" type="img/x-icon">
+    <link rel="stylesheet" href="css/libs/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    
+    <!-- head div start -->
+    <div class="sys-head">
+        <!-- header left div -->
+        <div>
+            <img class="sys-log" src="img/monitor-logo.png" alt="fish">
+        </div>
+
+        <!-- header right -->
+        <div class="head-right">
+            <div class='user-info'>
+                <img src="img/monitor-user.svg" alt="user">
+                <span>wolfrg</span>
+              
+            </div>
+                <span class="exit">退出登录</span>
+        </div>
+    <!-- head div end -->
+    </div> 
+
+        <!-- body div start -->
+    <div class="main-area container-fluid">
+        <div class="row">
+            <!-- 左侧 -->
+            <div class="col-md-3 col-sm-3 col-xs-3">
+
+            </div>
+            <!-- 右侧 -->
+            <div class="col-md-9 col-sm-9 col-xs-9">
+
+               <div class="main-menu">
+                   <!-- 主菜单 start -->
+                   <ul class="nav nav-pills">
+                       <li class="active" data-id="1"><a href="javascript:void(0)">域名管理</a></li>
+                       <li data-id="2" ><a href="javascript:void(0)">节点信息</a></li>
+                       <li data-id="3"><a href="javascript:void(0)">机器信息</a></li>
+                   </ul>
+               </div>
+               <!-- 子菜单 -->
+               <div class="sub-menu">
+                    <ul class="nav nav-tabs">
+                        <li><a href="">记录管理</a></li>
+                        <li><a href="">预案管理</a></li>
+                        <li><a href="">预案管理</a></li>
+                        <li><a href="">预案管理</a></li>
+                    </ul>
+               </div>
+
+               <div class="panel table-panel panel-default">
+                    <div class="page-header">DNS记录</div>
+                    <div class="panel-body">
+                        <div class="table-box">
+                            <table id="tablelist" class="table table-bordered">
+    
+                            </table>
+                        </div>
+                    </div>
+                </div>
+              <!--分页-->
+            <nav class="pull-right" aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+                
+               
+            </div>
+
+        </div>
+        <!-- body div end -->
+    </div>
+
+</body>
+</html>
+<script src="js/libs/jquery.min.js"></script>
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/index.js"></script>

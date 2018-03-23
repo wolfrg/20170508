@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .odiv{
+            width: 200px;
+            height: 100px;
+        }
+        .bg{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+// 动态改变css样式的方法： addClass()  removeClass()
+<div class="odiv" id="name" title="push"></div>
+
+// 属性的操作 attr()  removeAttr();
+
+//特性的操作 prop() removeProp();
+
+// 自定义属性data-
+<div class="div5" data-ip="192.168.1.2" data-name="user" data-pwd="000"></div>
+<input id="oinput" type="checkbox"/>
+<button class="button1">ok</button>
+</body>
+</html>
+<script src="jquery.min.js"></script>
+<script>
+    // addClass()  removeClass()
+   $('.odiv').addClass('bg');
+    $('.odiv').removeClass('odiv');
+
+    //attr()  removeAttr();
+
+   $('#name').attr('id')
+   $('#name').attr('title',888)
+    $('#name').attr({'title':888,'id':'age'})
+    $('#name').attr("title", function(){
+        return 999
+    })
+
+    $('#name').removeAttr('title');
+
+
+    //prop()  removeProp();
+    $('#oinput').prop({'disabled': true});
+
+    // data()
+    // 取数据
+    var ip = $('.div5').data('ip');
+    console.log(ip);
+    // 设置数据
+    $('.button1').on('click', function(){
+        $('.div5').data('addr',123);
+    })
+
+
+
+
+
+
+
+</script>

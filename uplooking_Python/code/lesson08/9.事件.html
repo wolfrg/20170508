@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .odiv,.odiv1{
+            width: 200px;
+            height: 100px;background-color: antiquewhite;
+        }
+        .scrollBox{
+            width: 100px;
+            height: 100px;
+            overflow: scroll;
+
+        }
+    </style>
+</head>
+<body>
+<div class="odiv">
+
+</div>
+<input id="name" type="text"/>
+
+<div class="scrollBox">
+   4534535555555555555555555555555555555555555555533333333333333333333333333333333333333333333333333333333333333
+</div>
+
+<textarea class="textarea">
+    34455675677645654
+</textarea>
+</body>
+</html>
+<script src="jquery.min.js"></script>
+<script>
+    // 同一个元素需要绑定两种不同的click事件，需要给事件后面加域，就是.name
+    $('.odiv').off('click.name').on('click.name', function(event){
+        console.log('click-name')
+    });
+    $('.odiv').off('click.sex').on('click.sex', function(event){
+        console.log('click-sex')
+    });
+
+    $('.odiv').off('mouseenter.age').on('mouseenter.age', function(event){
+        console.log('mouseenter');
+    });
+
+    // 事件委托
+    $('.odiv').on('click', 'span', function(){
+
+    })
+
+    // blur 光标失去焦点时触发
+    $('#name').off('blur').on('blur', function(e){
+        console.log(e.target.value); // 获取到表单元素的值
+    })
+
+    // change 表单元素值发生改变时时触发
+    $('#name').off('change').on('change', function(e){
+        console.log(e.target.value); // 获取到表单元素的值
+    })
+
+    $(window).on('resize', function(){
+        console.log('resize');
+    })
+
+    $('.scrollBox').off('scroll').on('scroll', function(){
+        console.log('scroll');
+    })
+
+    $('.textarea').on('select', function(e){
+        console.log('select');
+    })
+
+
+
+
+</script>

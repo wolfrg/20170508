@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #age{
+           width: 200px;
+           height: 20px;
+        }
+        .name{
+            width: 100px;
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="name" id="age">
+    <div class="sub">
+        yyyyyyyyyyyyyyyy
+        <div class="sub">iiiiiiiiiiiii</div>
+    </div>
+    <span></span>
+</div>
+
+<!--<form>-->
+    <!--<label>Name:</label>-->
+    <!--<input name="name" />-->
+    <!--<fieldset>-->
+        <!--<label>Newsletter:</label>-->
+        <!--<input name="newsletter" />-->
+    <!--</fieldset>-->
+<!--</form>-->
+<!--<input name="none" />-->
+
+<!--<div class="age">-->
+    <!--<div class="sub">uuuuuuuuuuuuu</div>-->
+<!--</div>-->
+
+1.jquery数据类型
+字符串、数字、布尔、数组、对象、Null、Undefined
+
+var a= "123";
+var b= 'aaa';
+var num = 12343;
+var arr = [];
+var arr = new Array()
+var obj = {'name':'vae'};
+var name = null;  // 定义的值为空
+var age = undefined;  // 根本不存在
+
+;可加可不加
+
+
+// es6的定义
+let a=[];
+const a=[]
+
+//变量名区分大小写，允许包含字母、数字、美元符号($)和下划线，但第一个字符不允许是数字，不允许包含空格和其他标点符号
+禁止使用JavaScript关键词、保留字全名
+
+var fileName;
+
+// 函数
+
+// 普通函数
+function addFile(){
+
+}
+addFile();
+
+// 自执行函数
+$(function(){
+
+})
+!function(){
+
+}
++function(){
+
+}
+~function(){
+}
+-function(){
+}
+
+// 匿名函数
+var a = function(){
+
+}
+
+
+
+
+</body>
+</html>
+<script src="jquery.min.js"></script>
+<script>
+//1.选择器
+    $('div').css('color','red');  // 标签选择器
+    $('#age').css('color','red');  //
+    $('.name').css('color','blue');
+//
+    $('.name .sub').css('background','pink');
+    $('.name > .sub').css('color','blue');
+console.log($("form > input"));
+
+   console.log($('#name,input[name="newsletter"] '))
+
+    $(function(){
+
+        console.log(666);
+    });
+
+   !function(){
+       console.log(777)
+   }()
+
+
+
+</script>

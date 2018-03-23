@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+1.append()  加在元素内部后面
+<ul id="oul">
+    <li>1</li>
+</ul>
+2.appendTo();
+
+3.prepend();  加在元素内部前面
+
+4.prependTo();
+
+5.after  加在元素外部后面
+
+6.before 加在元素外部前面
+
+7.empty()  清空元素内部
+
+8.remove()  整个移除元素
+
+9.查找元素
+children
+find
+next
+prev
+parent()
+parents()
+
+<span class="parent">
+    <span>
+        <span>
+
+        </span>
+    </span>
+    <span class="opan">
+        <p>
+            <em>434</em>
+        </p>
+    </span>
+</span>
+
+</body>
+</html>
+<script src="jquery.min.js"></script>
+<script>
+    $('#oul').append('<li>2</li>');
+    $('<li>3</li>').appendTo('#oul');
+    $('#oul').prepend('<li>4</li>');
+    $('<li>6</li>').prependTo('#oul');
+
+    $('#oul').before('<div>45</div>')
+    $('#oul').after('<div>77</div>')
+
+    $('#oul').empty();
+    $('div').remove();
+
+    var child = $('.parent').children();
+    var find = $('.parent').find('em');
+    console.log(find);
+
+
+</script>

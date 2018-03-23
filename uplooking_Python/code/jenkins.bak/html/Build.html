@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>代码部署系统</title>
+    </head>
+    <link rel="stylesheet" type="text/css" href="/static/css.css" />
+    <body>
+    	<div class="container">
+            <div class="user">
+                <div>
+                    <a href="/login/">登录</a>
+                    <a href="/logout/">退出</a>
+                </div>
+            </div>
+    		<div id="nav">
+    			<ul>
+    				<li><a href="/">首页</a></li>
+    				<li><a href="/see">查看</a></li>
+    				<li><a href="/agreen">操作</a></li>
+    				<li><a href="/build"  class="navActive">构建项目</a></li>
+    			</ul>
+    		</div>
+    		<p class="title">请选择需要构建的项目</p>
+	        <form action="/bulid-test" method="get">
+	            <select id="project">
+	                <option value ="php">php</option>
+	                <option value ="java">java</option>
+	            </select>
+	            <select name='name' id="program">
+	                <option value ="test-php">php-test</option>
+	            </select>
+	            <input type="submit" class="btn consent" value="项目构建" />
+	        </form>
+	        <form action="/build-server" method="get">
+	            <select id="project2">
+	                <option value ="php">php</option>
+	                <option value ="java">java</option>
+	            </select>
+	            <select name='name' id="program2">
+	                <option value ="test-php">php-test</option>
+	            </select>
+	            <input type="submit" class="btn consent"  value="项目部署至服务器" />
+	        </form>
+    	</div>
+    </body>
+     <script src="js"></script>
+    <script>
+    	$("#project").change(function(){
+    		if($(this).val()=="php"){
+    			$("#program").html('<option value ="test-php">php-test</option>')
+    		}else if($(this).val()=="java"){
+    			$("#program").html('<option value ="test-java">test-java</option>')
+    		}
+    	});
+    	$("#project2").change(function(){
+    		if($(this).val()=="php"){
+    			$("#program2").html('<option value ="test-php">php-test</option>')
+    		}else if($(this).val()=="java"){
+    			$("#program2").html('<option value ="test-java">test-java</option>')
+    		}
+    	})
+    </script>
+</html>

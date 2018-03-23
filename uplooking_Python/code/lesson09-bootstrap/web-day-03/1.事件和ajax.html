@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .sub{
+            width: 50px;
+            height: 50px;
+            background-color: aqua;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="outer">
+    <div class="sub"></div>
+    <div class="sub"></div>
+    <div class="sub"></div>
+</div>
+</body>
+</html>
+<script src="jquery.min.js">
+
+</script>
+<script>
+
+    // 事件冒泡
+    $('.outer').click( function(e){
+        console.log('outer')
+    })
+    $('.sub').click( function(e){
+        e.stopPropagation();
+        console.log('sub');
+    })
+
+    // $.ajax()
+    var ary= [1,2,3]
+    var num =$.inArray(2, ary);
+    var num =$.inArray(20, ary);
+    console.log(num);
+</script>

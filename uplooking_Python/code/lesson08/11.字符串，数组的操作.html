@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="jquery.min.js"></script>
+<script>
+   // 数组操作
+    // each  可以遍历数组和对象
+    var obj = {'name':'vae','age':15}
+
+   $.each(obj, function(i, v){
+       console.log(i,v)
+   })
+
+    // forEach 只能遍历数组
+    var array= [3,6,7]
+    array.forEach(function(value, index){
+        console.log(value, index);
+    })
+
+    // map 根据条件形成一个新的数组，原来的数组不改变
+   var a = $.map(array, function(index, value){
+
+        return value/3
+   })
+
+    console.log(a, array)
+
+    // concat 连接数组
+    var a=[1,2,3],
+            b=['a','b']
+    var c= a.concat(b);
+    console.log(c);
+
+    // slice 截取数组元素
+    var arr = [1,2,3,4,5];
+    console.log(arr.slice(2))  // 从2开始一直往后取
+   console.log(arr.slice(2,4)) //start ,end
+   console.log(arr.slice(-1))  // 从后面取数据
+
+    // splice 替换删除数组元素
+   console.log(arr.splice(2,1), arr)  // 从后面取数据,(start,个数),
+   console.log(arr.splice(2,1,'6'), arr)  // 从后面取数据,(start,个数，替换的值),
+
+    // join 将数组各项连起来，形成字符串
+    var joinAry=[1,2,3,4]
+    console.log(joinAry.join('-'));
+
+    // sort数组排序
+    var sortAry = [3,1,7,2,5]
+   var afterSort = sortAry.sort(function (ao,bo) {
+       // bo-ao 倒序排序， ao-bo是正序排序
+       return bo-ao
+   })
+    console.log(afterSort);
+
+
+    // **************************************************************
+    // 字符串操作
+   // trim() 去掉首尾空格
+    var str1 = '  234234  ';
+    console.log(str1.trim())
+
+    // slice  截取字符串
+    var str2 = 'a b c d e f';
+    console.log(str2.slice(2))
+
+    // split 用特定符号分隔字符串
+   console.log(str2.split(' '))
+
+    // length 字符串的长度
+    console.log(str1.length)
+
+    // indexOf 找出对应的字符
+    var str3 = 'abcdef';
+    console.log(str3.indexOf('c'));
+   console.log(str3.indexOf(3)); // -1 没有的话返回-1
+
+    // replace  替换字符串
+    var str4 = 'hello world';
+   var afterReplace = str4.replace(/hello/,"hi")
+    console.log(afterReplace);
+
+    // concat 和数组一样，拼接字符串
+
+    // substr和 substring
+   var str5 = 'abcccccdef';
+    var afterSubstr = str5.substr(2,3); // 找从索引2开始后面的3个字符
+   var afterSubstring = str5.substring(2,3); //找从索引2开始到索引3之间的字符
+
+    console.log(afterSubstring);
+
+
+
+
+
+
+</script>

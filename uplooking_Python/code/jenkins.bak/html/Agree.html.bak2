@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box {
+				width: 1000px;
+				margin: auto;
+			}
+			.box table {
+				width: 100%;
+				border-collapse: collapse;
+			}
+			.box table th {
+				padding: 10px 0;
+				border: 1px solid #fff;
+				background: #ccc;
+			}
+			.box table th:first-child{
+				border-left: 1px solid #ccc;
+			}
+			.box table th:last-child{
+				border-right: 1px solid #ccc;
+			}
+			.box table td {
+				padding: 10px 0;
+				border: 1px solid #ccc;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<table>
+				<thead>
+					<tr>
+						<th>项目</th>
+						<th>程序</th>
+						<th>状态</th>
+						<th>同意</th>
+						<th>拒绝</th>
+						<th>删除</th>
+						<th>已构建</th>
+					</tr>
+				</thead>
+				<tbody id="tbody">
+					
+				</tbody>
+			</table>
+		</div>
+	</body>
+	<script src="js"></script>
+	<script>
+		function ajaxGetSql(){
+			$.ajax({
+				type:"GET",
+				url:'http://101.201.239.65/get-sql',
+				data:"json",
+				success:function(reg){
+					 var reg = eval(reg);
+					 var str = "";
+					for(var i=0;i<reg.length;i++){
+						var status = "";
+						if(reg[i].status ==0){
+							status = "审核中";
+						}else if(reg[i].status==1){
+							status = "同意";
+						}else if(reg[i].status==2){
+							status="拒绝";
+						}else  if(reg[i].status==3){
+							status="已构建";
+						}
+						str+='<tr data-status='+reg[i].status+' data-id='+reg[i].id+'><td>'+reg[i].program+'</td><td>'+reg[i].project+'</td><td>'+status+'</td><td><input type="button" class="consent" value="同意" /></td><td><input type="button" class="refuse" value="拒绝" /></td><td><input type="button" class="delete" value="删除" /></td><td><input type="button" class="structure" value="已构建" /></td></tr>';
+					}
+					$("#tbody").html(str);
+				},
+			});
+		}
+		ajaxGetSql()
+	$("#tbody").on("click",".consent",function(){  //同意
+//		var status = $(this).parents("tr").attr("data-status");
+		var id = $(this).parents("tr").attr("data-id");
+		$.ajax({
+			type:"GET",
+			url:"http://101.201.239.65/sql_agreen",
+			dataType:"json",
+			data:{"id":id},
+			success:function(r){
+				if(r==id){
+					ajaxGetSql()
+				}
+			}
+		});
+	});
+	$("#tbody").on("click",".refuse",function(){ // 拒绝
+//		var status = $(this).parents("tr").attr("data-status");
+		var id = $(this).parents("tr").attr("data-id");
+		$.ajax({
+			type:"GET",
+			url:"http://101.201.239.65/sql_refuse",
+			dataType:"json",
+			data:{"id":id},
+			success:function(r){
+				if(r==id){
+					ajaxGetSql()
+				}
+			}
+		});
+	});
+	$("#tbody").on("click",".delete",function(){  // 删除
+//		var status = $(this).parents("tr").attr("data-status");
+		var id = $(this).parents("tr").attr("data-id");
+		$.ajax({
+			type:"GET",
+			url:"http://101.201.239.65/sql_remove",
+			dataType:"json",
+			data:{"id":id},
+			success:function(r){
+				if(r==id){
+					ajaxGetSql()
+				}
+			}
+		});
+	});
+	$("#tbody").on("click",".structure",function(){  //已构建
+//		var status = $(this).parents("tr").attr("data-status");
+		var id = $(this).parents("tr").attr("data-id");
+		$.ajax({
+			type:"GET",
+			url:"http://101.201.239.65/sql_build",
+			dataType:"json",
+			data:{"id":id},
+			success:function(r){
+				if(r==id){
+					ajaxGetSql()
+				}
+			}
+		});
+	});
+	</script>
+</html>

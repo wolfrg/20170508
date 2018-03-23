@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="jquery.min.js"></script>
+<script>
+    // Date()函数
+    var date = new Date(); //当前时间-国际标准时间
+    var shijianchuo = Date.parse(date); // 转时间戳
+    var staTime = new Date(shijianchuo) // 转标准时间
+
+    console.log(staTime);
+    console.log(staTime.getFullYear(),
+        staTime.getMonth(),staTime.getDate(),staTime.getHours()
+    ) //获取年月日，时分秒
+
+    // Math函数
+    // 随机数
+    var random = Math.random()
+    console.log(random);
+    //Math.random()*(max - min) + min 俺需要获取各种区间的随机数
+    var random1 = parseInt(Math.random()*99 +1) // parseInt强制转成整形数据
+    console.log(random1);
+
+    // 获取数组最大值，最小值
+    var array=[1,6,77,2];
+    var strMax = Math.max(1,6,77,2);
+    console.log(Math.max.apply(null,array))
+    console.log(Math.min.apply(null,array))
+
+</script>

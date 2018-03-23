@@ -1,0 +1,43 @@
+{"message": "success",
+  "code": 1,
+  "data": {
+    "detail": [
+      {
+        "ip": "103.199.228.171",
+        "zhuji": "tj1-jm-coverity01.kscn",
+        "suzhuji": "",
+        "jifang": "金山云武清",
+        "status": "working",
+        "menu": "ksc_vg3",
+        "TD": "",
+        "buytime":"20170703",
+        "changshang":"金山云",
+        "tags":"cop.xiaomi_owt.miliao_pdl.jm_service.nexus_idc.tj1_loc.kscn_status.offline"
+      },
+      {
+        "ip": "10.38.11.103",
+        "zhuji": "tj-pt-kebox-bsp01.kscn",
+        "suzhuji": "",
+        "jifang": "金山云武清",
+        "status": "working",
+        "menu": "ksc_vg1",
+        "TD": "",
+        "buytime":"20170705",
+        "changshang":"金山云",
+        "tags":"cop.xiaomi_owt.mitv_pdl.jm_service.nexus_idc.tj1_loc.kscn_status.offline"
+      },
+      {
+        "ip": "103.199.228.171",
+        "zhuji": "tj1-miui-coverity01.kscn",
+        "suzhuji": "",
+        "jifang": "金山云武清",
+        "status": "working",
+        "menu": "ksc_vg3",
+        "TD": "",
+        "buytime":"20170703",
+        "changshang":"金山云",
+        "tags":"cop.xiaomi_owt.miliao_pdl.jm_service.nexus_idc.tj1_loc.kscn_status.offline"
+      }
+    ]
+  }
+}

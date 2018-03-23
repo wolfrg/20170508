@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        odiv{
+            display: none;
+            width: 200px;
+            height: 500px;
+            background-color: aqua;
+        }
+
+    </style>
+</head>
+<body>
+<div class="fodiv">
+
+</div>
+
+</body>
+</html>
+<script src="jquery.min.js"></script>
+<script>
+    // show, hide, toggle
+    $('.odiv').show(); // 显示元素
+    $('.odiv').hide(); // 隐藏元素
+
+    // 滑动slideDown, slideUp, .slideToggle
+    $('.odiv').slideDown('fast');
+    $('.odiv').slideUp('fast');
+
+    // 淡入淡出 fadeIn, fadeOut, fadeToggle
+    $('.odiv').fadeIn('slow');
+    $('.odiv').fadeOut('slow');
+
+    // animate自定义动画
+    $('.odiv').animate({
+        'width':'400px',
+        'opacity':.2
+    },1000)
+
+    // stop停止动画
+
+    // delay 延迟动画
+    $('#foo').slideUp(300).delay(2000).fadeIn(400);
+
+
+</script>

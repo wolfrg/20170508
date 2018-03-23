@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>代码部署系统</title>
+    </head>
+    <body>
+        <h1>请选择需要构建的项目</h1>
+        <form action="/bulid-test" method="get">
+            <select>
+                <option value ="php">php</option>
+                <option value ="java">java</option>
+            </select>
+            <select name='name'>
+                <option value ="test-php">php-test</option>
+                <option value ="test-java">java-test</option>
+            </select>
+            <input type="submit" value="项目构建" />
+        </form>
+        <form action="/build-server" method="get">
+            <select>
+                <option value ="php">php</option>
+                <option value ="java">java</option>
+            </select>
+            <select name='name'>
+                <option value ="test-php">php-test</option>
+                <option value ="test-java">java-test</option>
+            </select>
+            <input type="submit" value="项目部署至服务器" />
+        </form>
+    </body>
+</html>
