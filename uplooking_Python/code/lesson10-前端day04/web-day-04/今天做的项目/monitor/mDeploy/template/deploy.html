@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>monitor</title>
+    <!--浏览器上的图标-->
+    <link rel="icon" href="../../img/monitor-logo.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="../../css/lib/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/doublebox-bootstrap.css"/>
+    <link rel="stylesheet" href="../../css/index.css"/>
+    <link rel="stylesheet" href="../css/deploy.css"/>
+</head>
+<body>
+<!--网页头部部分-->
+<div class="sys-head">
+    <!--企业logo部分-->
+    <img class="sys-logo" src="../../img/monitor-logo.png" alt="fish"/>
+    <!--右侧部分，包含用户头像和退出登录按钮-->
+    <div class="head-right">
+        <!--用户信息，包含头像和名字-->
+        <div class="user-info">
+
+            <img src="../../img/monitor-user.svg" alt=""/>
+            <span class="user-name">wangxuejun</span>
+        </div>
+        <!--退出登录按钮-->
+        <span class="exit">退出登录</span>
+    </div>
+</div>
+
+<div class="main-area container-fluid">
+    <div class="row">
+        <!--左侧节点树-->
+        <div class="col-md-3 col-sm-3 col-xs-3 left-part"></div>
+        <!--右侧table-->
+        <div class="col-md-9 col-sm-9 col-xs-9 right-part">
+            <!--主菜单-->
+            <div class="main-menu menu-con">
+                <ul class="nav nav-pills">
+                    <li data-id="1"><a href="../../mDomain/template/domain.html">域名管理</a></li>
+                    <li data-id="2"><a href="../../mHost/template/host.html">机器信息</a></li>
+                    <li  data-id="3"><a href="../../mTree/template/tree.html">节点管理</a></li>
+                    <li  class="active"   data-id="3"><a href="../../mDeploy/template/deploy.html">部署系统</a></li>
+                </ul>
+            </div>
+
+            <div class="content-main">
+                <div class="task-list-page">
+                    <div class="btn btn-success js-add-task inline" data-for="add" data-target="#exampleModal" data-toggle="modal">新增</div>
+                    <div class="btn btn-success">操作</div>
+                    <div class="btn btn-success">显示10条</div>
+                    <table class="table" id="bodyList">
+
+                    </table>
+
+                    <!--分页-->
+                    <nav aria-label="Page navigation" style="text-align: right;">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="deploy-task-page hide">
+                    <div class="panel panel-default">
+                        <div class="panel-heading js-lanuch-job">
+                            <span class="back-to-list">返回</span>
+                            <span class="lanuch-job-name"></span>
+                        </div>
+                        <div class="panel-body">
+                            <form id="form-lanuch-info" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="version">版本号:</label>
+                                    <input class="form-control" type="text" name="version" id="version"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="version">机器列表:</label>
+                                    <div id="showMachine" data-toggle="modal" data-target="#exampleModal" class="btn btn-success">显示列表</div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-danger">编译部署</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--统一多种模态框-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">添加节点</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+                <button type="button" id="confirmBtn" class="btn btn-primary">ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../js/lib/jquery.min.js"></script>
+<script src="../../js/lib/bootstrap.min.js"></script>
+<script src="../../js/lib/doublebox-bootstrap.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../js/deploy.js"></script>

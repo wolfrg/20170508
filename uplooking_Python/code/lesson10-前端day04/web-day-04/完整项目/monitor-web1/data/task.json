@@ -1,0 +1,42 @@
+{"message": "success",
+  "code": 1,
+  "data": {
+    "tasks": [
+      {
+        "name": "job.createNewNode.part.1",
+        "serverGroup": "server-group-1",
+        "jobGroup": "job-group-1",
+        "enviroment": "all-jkt",
+        "restart": "stop"
+      },
+      {
+        "name": "job.createNewNode.part.1",
+        "serverGroup": "server-group-1",
+        "jobGroup": "job-group-1",
+        "enviroment": "all-jkt",
+        "restart": "stop"
+      },
+      {
+        "name": "job.createNewNode.part.1",
+        "serverGroup": "server-group-1",
+        "jobGroup": "job-group-1",
+        "enviroment": "all-jkt",
+        "restart": "stop"
+      },
+      {
+        "name": "job.createNewNode.part.1",
+        "serverGroup": "server-group-1",
+        "jobGroup": "job-group-1",
+        "enviroment": "all-jkt",
+        "restart": "stop"
+      },
+      {
+        "name": "job.createNewNode.part.1",
+        "serverGroup": "server-group-1",
+        "jobGroup": "job-group-1",
+        "enviroment": "all-jkt",
+        "restart": "stop"
+      }
+    ]
+  }
+}

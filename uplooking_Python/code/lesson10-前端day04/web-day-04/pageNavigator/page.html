@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./css/bootstrap.css"/>
+    <link rel="stylesheet" href="./css/pageNav.css"/>
+</head>
+<body>
+<nav aria-label="Page navigation" class="page-nav-outer" id="PageNavId">
+   </nav>
+</body>
+</html>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/pageNav.js"></script>
+<script>
+    var pageNavObj = null;
+    var selectCountNum = 1;
+    jQuery(document).ready(function($) {
+        //初始化
+        //pageNavCreate("PageNav",200,1,pageNavCallBack);
+        pageNavObj = new PageNavCreate("PageNavId",{
+            pageCount:30,//总页数
+            currentPage:1,//当前页
+            perPageNum:5,//每页按钮数
+        });
+        // 必须写，点击完成后的回调
+        pageNavObj.afterClick(pageNavCallBack);
+    });
+
+    function pageNavCallBack(clickPage){
+        //clickPage是被点击的目标页码
+        //console.log(clickPage);
+
+        //一般来说可以在这里通过clickPage,执行AJAX请求取数来重写页面
+
+            pageNavObj = new PageNavCreate("PageNavId",{
+                pageCount:30,//总页数
+                currentPage:clickPage,//当前页
+                perPageNum:5,//每页按钮数
+            });
+
+            pageNavObj.afterClick(pageNavCallBack);
+
+
+
+        //最后别忘了更新一遍翻页导航栏
+        //pageNavCreate("PageNav",pageCount,clickPage,pageNavCallBack);
+
+    }
+</script>

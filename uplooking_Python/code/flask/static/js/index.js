@@ -23,7 +23,19 @@ $(function(){
 		$.get("/delete",function(data, status){
 			alert("数据: " + data + "\n状态: " + status);
 		});
-	});
+    });
+    
+    $(".addBtn").click(function(){
+        $.get("insert",function(data,status){
+            alert("数据：" + data + "\n状态：" + status);
+        });
+    });
+
+    $("button").click(function(){
+        $.ajax({url:"/ajax.html",success:function(result){
+            $("#div1").html(result);
+        }});
+    });
 
     monitor.init()
 })

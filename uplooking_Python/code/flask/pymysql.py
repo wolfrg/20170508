@@ -22,8 +22,18 @@ def update_sql():
     db.commit()
     return '将要删除这行数据'
 
-# @app.route('insert',methods=['GET','POST'])
-#     pass
+@app.route('/insert',methods=['GET','POST'])
+def insert_sql():
+    cursor = db.cursor()
+    sql = "insert into user_ip_info (id,username,position,ipaddr,remark) values (7,'王超','前锋','192.168.0.7','足球')"
+    cursor.execute(sql)
+    db.commit()
+    return '插入一行数据'
 
+@app.route('/ajax.html',methods=['GET','POST'])
+def myajax():
+    return render_template('ajax.html')
+    #pass
+    
 if __name__ == '__main__':
     app.run(debug=True)

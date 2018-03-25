@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./css/lib/bootstrap.min.css"/>
+
+</head>
+<body>
+<nav class="pull-left" aria-label="Page navigation">
+    <ul class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>
+<script src="js/lib/jquery.min.js"></script>
+<script>
+    var search = location.search;
+    if(!search){
+        location.href = location.pathname + '?page=3';
+    }
+
+    $('.pagination').on('click', 'li',function(e){
+        var pageNum = $(this).find('a').text();
+//        第一种方式：带参数的url跳转
+//        location.href = location.pathname + '?page='+pageNum
+
+//        第二种方式 localstorage
+        localStorage.setItem('page',pageNum);
+        console.log(localStorage.getItem('page'))
+
+    })
+
+
+    // ***bootstrap表格里面溢出隐藏方法
+    给table加一个table-layout:fixed的样式
+    然后给对应溢出的td加上
+    overflow:hidden;
+    text-over:ellipse;
+    white-space:nowarp;
+
+
+    var obj = {}
+    var object = new Object();
+
+    obj={
+        name:1,
+        str:'werth',
+        fun: function(){},
+        obj:{
+            name:434,
+            obj2:{
+               age:null,
+            }
+        },
+    }
+
+
+    $.ajax({
+        type:'get',
+        data:{page:10,name:'aaa'},
+        success:function(callback){},
+        error:function(){},
+    });
+
+    // 生成一个tree的方式
+    1.引入css，必须按顺序引入
+//    <link rel="stylesheet" href="../../css/ztree/dist/zTreeStyle.css"/>
+//    <link rel="stylesheet" href="../../css/ztree/dist/font-awesome-zTree.css"/>
+//    <link rel="stylesheet" href="../../css/ztree/font-awesome/css/font-awesome.css"/>
+    给html上的ztree的标签加上ztree的类：
+//    <ul class="tree-box ztree" id="treelist"></ul>
+    2.引入ztree自己需要用到的图标 ，根目录下img文件夹
+    3.引入js
+
+    <!--<script src="../../js/lib/jquery.ztree.core.js"></script>-->
+<!--<script src="../../js/lib/jquery.ztree.excheck.js"></script>-->
+<!--<script src="../../js/lib/jquery.ztree.exedit.js"></script>-->
+    4.在公共方法utils中将ztree的所有用到的方法放进去
+入口函数是treeList
+    5.在ztreeList函数的init中更改三个变量
+第一个是ztree的节点id，第二个是setting配置，第三个是从接口得到的ztree的数据
+$.fn.zTree.init($("#treelist"), setting, zNodes);
+
+
+// 生成一个左右选择框的插件
+1.引入css
+<!--<link rel="stylesheet" href="../../css/doublebox-bootstrap.css"/>-->
+2.引入js
+<!--<script src="../../js/lib/doublebox-bootstrap.js"></script>-->
+3.引入字体库
+根目录下的fonts
+4.在要生成的标签里面必须先加上一个预先定义好的select标签
+<!--<select multiple="multiple" size="10" name="doublebox" class="machineBox"></select>-->
+5.直接调用方法即可
+$('.machineBox').doublebox({
+    nonSelectedListLabel: '产品线下的机器列表',
+    selectedListLabel: '已选择的机器列表',
+    preserveSelectionOnMove: 'moved',
+    moveOnSelect: false,
+    nonSelectedList:[{"roleId":"1","roleName":"设备1"},{"roleId":"2","roleName":"设备2"},{"roleId":"3","roleName":"设备3"},{"roleId":"4","roleName":"设备4"}],
+    selectedList:[{"roleId":"4","roleName":"设备4"},{"roleId":"5","roleName":"设备2"}],
+    optionValue:"roleId",
+    optionText:"roleName",
+    doubleMove:true,
+});
+
+nonSelectedList是左侧显示的数据列表
+selectedList是右侧显示的数据列表
+这两个数据需要调接口取到对应的数据
+
+// 分页
+1.确定有多少页
+2.判断
+
+</script>

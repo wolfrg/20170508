@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>monitor</title>
+    <!--浏览器上的图标-->
+    <link rel="icon" href="../../img/monitor-logo.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="../../css/lib/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/index.css"/>
+</head>
+<body>
+<!--网页头部部分-->
+<div class="sys-head">
+    <!--企业logo部分-->
+    <img class="sys-logo" src="../../img/monitor-logo.png" alt="fish"/>
+    <!--右侧部分，包含用户头像和退出登录按钮-->
+    <div class="head-right">
+        <!--用户信息，包含头像和名字-->
+        <div class="user-info">
+
+            <img src="../../img/monitor-user.svg" alt=""/>
+            <span class="user-name">wangxuejun</span>
+        </div>
+        <!--退出登录按钮-->
+        <span class="exit">退出登录</span>
+    </div>
+</div>
+
+<div class="main-area container-fluid">
+    <div class="row">
+        <!--左侧节点树-->
+        <div class="col-md-3 col-sm-3 col-xs-3 left-part"></div>
+        <!--右侧table-->
+        <div class="col-md-9 col-sm-9 col-xs-9 right-part">
+            <!--主菜单-->
+            <div class="main-menu menu-con">
+                <ul class="nav nav-pills">
+                    <li data-id="1"><a href="../../mDomain/template/domain.html">域名管理</a></li>
+                    <li  class="active"  data-id="2"><a href="../../mHost/template/host.html">机器信息</a></li>
+                    <li  data-id="3"><a href="../../mTree/template/tree.html">节点管理</a></li>
+                    <li  data-id="3"><a href="../../mDeploy/template/deploy.html">部署系统</a></li>
+                </ul>
+            </div>
+            <!--子菜单-->
+            <div class="sub-menu menu-con">
+                <ul class="nav nav-tabs">
+                    <li class="active" data-id="0"><a href="javascript:void(0)">记录管理</a></li>
+                    <li data-id="1"><a href="javascript:void(0)">预案管理</a></li>
+                    <li data-id="2"><a href="javascript:void(0)">预案管理</a></li>
+                    <li data-id="3"><a href="javascript:void(0)">预案管理</a></li>
+                </ul>
+            </div>
+            <!--表格-->
+            <div class="panel table-panel panel-default">
+                <div class="page-header">DNS记录</div>
+                <div class="panel-body">
+                    <div class="table-box">
+                        <table id="tablelist" class="table">
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--分页-->
+            <nav class="pull-right" aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../../js/lib/jquery.min.js"></script>
+<script src="../../js/lib/bootstrap.min.js"></script>
+<script src="../../js/util.js"></script>
+<script src="../js/host.js"></script>
+<script src="../../js/index.js"></script>

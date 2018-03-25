@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+
+</head>
+<body>
+<nav aria-label="Page navigation" style="text-align: right;">
+    <ul id="pagelist" class="pagination">
+        <li>
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li>
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>
+<script>
+$(function(){
+    var search = window.location.search;
+
+    if(!search){
+        var url = window.location.href + '?page=1';
+        window.location.href = url;
+    }
+
+    $('#pagelist li').click(function(e){
+        var thisPageNum = $(this).find('a').text();
+//        var url = window.location.pathname + '?page='+thisPageNum;
+//        window.location.href = url;
+        localStorage.setItem('pagenum', thisPageNum);
+    })
+
+})
+</script>

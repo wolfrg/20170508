@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>monitor</title>
+    <link rel="icon" href="../../img/monitor-logo.png" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome-ie7.min.css"/>
+    <link rel="stylesheet" href="../../assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/dist/zTreeStyle.css">
+    <link rel="stylesheet" href="../../css/dist/font-awesome-zTree.css">
+
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="../css/hosts.css">
+
+    <script src="../../js/lib/jquery.min.js"></script>
+    <script src="../../js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/lib/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="../../js/lib/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="../../js/lib/jquery.ztree.exedit.js"></script>
+
+</head>
+<body>
+<div class="guide-head">
+    <img class="sys-logo" src="../../img/monitor-logo.png" alt="">
+    <div class="right-header">
+        <div class="user-info">
+            <img class="user-img" src="../../img/monitor-user.svg" alt="">
+            <span class="user-name">王雪君</span>
+        </div>
+        <div class="exit-btn">退出登录</div>
+    </div>
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-9 js-right-part">
+            <div class="center-main">
+
+                <div class="head-tab">
+                    <ul class="nav nav-pills js-main-tabs">
+                        <li role="presentation" id="domain" data-menu="1"><a href="../../mDomain/template/domain.html">域名管理</a></li>
+                        <li role="presentation" id="machine"  class="active" data-menu="2"><a href="../template/hosts.html">机器信息</a></li>
+                        <li role="presentation" id="nodemsg" data-menu="3"><a href="../../mTree/template/serviceTree.html">节点信息</a></li>
+                        <li role="presentation" id="deploy" data-menu="4"><a href="../../mDeploy/template/deploy.html">部署系统</a></li>
+                    </ul>
+
+                </div>
+                <div class="content-main">
+                    <ul class="nav nav-tabs machineNav js-sub-tabs">
+                        <li role="presentation" class="active" data-sub="4"><a href="#">物理机</a></li>
+                        <li role="presentation" data-sub="5" ><a href="#">虚拟机</a></li>
+                        <li role="presentation" data-sub="6" ><a href="#">网络设备</a></li>
+                    </ul>
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">DNS记录</div>
+
+                        <!-- Table -->
+                        <table class="table" id="bodyList">
+                        </table>
+                    </div>
+                    <!--分页-->
+                    <nav aria-label="Page navigation" style="text-align: right;">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<script src="../../js/lib/utils.js"></script>
+<script src="../js/hosts.js"></script>
