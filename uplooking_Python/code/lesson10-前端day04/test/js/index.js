@@ -1,10 +1,10 @@
-$(function(){
-  var monitor = {
+// $(function(){
+//   var monitor = {
 
-      pageSel:function(){
-          var _this = this;
+//       pageSel:function(){
+//           var _this = this;
           
 
-      }
-  }
-})
+//       }
+//   };
+// })

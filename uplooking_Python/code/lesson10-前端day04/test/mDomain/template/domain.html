@@ -55,42 +55,28 @@
                     <li><a href="../../mDeploy/template/deploy.html">部署系统</a></li>
                 </ul>
             </div>
-            <!-- 右侧子菜单 -->
-            <div class="content-main">
+          
+                <!--子菜单-->
+            <div class="sub-menu menu-con">
                     <ul class="nav nav-tabs">
-                        <li role="" class="active" data-sub="1"><a href="#">记录管理</a></li>
-                        <li role="" data-sub="2" ><a href="#">预案管理</a></li>
-                        <li role="" data-sub="3" ><a href="#">操作日志</a></li>
-                        <li role="" data-sub="4" ><a href="#">DNSPod日志</a></li>
+                        <li class="active" data-id="0"><a href="javascript:void(0)">记录管理</a></li>
+                        <li data-id="1"><a href="javascript:void(0)">预案管理</a></li>
+                        <li data-id="2"><a href="javascript:void(0)">预案管理</a></li>
+                        <li data-id="3"><a href="javascript:void(0)">预案管理</a></li>
                     </ul>
-                    <div class="panel panel-default">
-                        <!-- Default panel contents -->
-                        <div class="panel-heading">DNS记录</div>
+            </div>
 
-                        <!-- Table -->
-                        <table class="table" id="bodyList">
-                        </table>
+            <!--表格-->
+            <div class="panel table-panel panel-default">
+                    <div class="page-header">DNS记录</div>
+                    <div class="panel-body">
+                        <div class="table-box">
+                            <table id="tablelist" class="table">
+    
+                            </table>
+                        </div>
                     </div>
-                    <!--分页-->
-                    <nav aria-label="" style="text-align: right;">
-                        <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
-
 
            
             
@@ -103,4 +89,5 @@
 </html>
 <script src="../../js/lib/jquery.min.js"></script>
 <script src="../../js/lib/bootstrap.min.js"></script>
-<script src="../../js/index.js"></script>
+<script src="../../js/util.js"></script>
+<script scr="../js/domain.js"></script>
