@@ -25,7 +25,8 @@
     z-index: 9999;
 }
 #exampleModal .box2 select ,#exampleModal .box1 select{
-    min-height: 172px;!important;
+    min-height: 172px;
+    important;
 }
 #exampleModal .btn-box .btn{
     border: 0;

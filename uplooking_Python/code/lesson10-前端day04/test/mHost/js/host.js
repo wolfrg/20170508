@@ -1,13 +1,13 @@
 $(function(){
-    var domain = {
 
+    var host = {
 
 
         init:function(){
             public_func.subMenuClick();
         }
-
     };
 
-    domain.init();
-});
+    host.init();
+
+})
