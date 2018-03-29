@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>monitor</title>
+    <link rel="icon" href="../../img/monitor-logo.png" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="../../css/font-awesome-ie7.min.css"/>
+    <link rel="stylesheet" href="../../assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/dist/zTreeStyle.css">
+    <link rel="stylesheet" href="../../css/dist/font-awesome-zTree.css">
+
+    <link rel="stylesheet" href="../css/doublebox-bootstrap.css">
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="../css/deploy.css">
+
+    <script src="../../js/lib/jquery.min.js"></script>
+    <script src="../../js/lib/bootstrap.min.js"></script>
+    <script src="../js/doublebox-bootstrap.js"></script>
+    <script type="text/javascript" src="../../js/lib/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="../../js/lib/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="../../js/lib/jquery.ztree.exedit.js"></script>
+
+
+
+</head>
+<body>
+<!--页面头部-->
+<div class="guide-head">
+    <img class="sys-logo" src="../../img/monitor-logo.png" alt="">
+    <div class="right-header">
+        <div class="user-info">
+            <img class="user-img" src="../../img/monitor-user.svg" alt="">
+            <span class="user-name">王雪君</span>
+        </div>
+        <div class="exit-btn">退出登录</div>
+    </div>
+
+</div>
+<!--页面主体内容-->
+<div class="container-fluid">
+    <div class="row">
+        <!--左侧树-->
+        <div class="col-md-3 js-left-part" >
+            <div class="float-tree">
+                <!--树的结构-->
+                <ul class="tree-box ztree" id="treelist">
+
+                </ul>
+                <!--树的控制按钮，点击展开或缩回-->
+                <div class="slide-control icon-chevron-left js-slide-tree"></div>
+            </div>
+        </div>
+        <!--右侧表格-->
+        <div class="col-md-9 js-right-part">
+            <div class="center-main">
+
+                <!--一级菜单-->
+                <div class="head-tab">
+                    <ul class="nav nav-pills js-main-tabs">
+                        <li role="presentation" id="domain" data-menu="1"><a href="../../mDomain/template/domain.html">域名管理</a></li>
+                        <li role="presentation" id="machine" data-menu="2"><a href="../../mHosts/template/hosts.html">机器信息</a></li>
+                        <li role="presentation" id="nodemsg" data-menu="3"><a href="../../mTree/template/serviceTree.html">节点信息</a></li>
+                        <li role="presentation" class="active" id="deploy" data-menu="4"><a href="../template/deploy.html">部署系统</a></li>
+                    </ul>
+
+                </div>
+
+                <!--主体内容区域-->
+                <div class="content-main">
+
+                    <!--任务列表-->
+                    <div class="task-list-page">
+                        <div class="btn btn-success inline" data-for="add" data-target="#exampleModal" data-toggle="modal">新增</div>
+                        <div class="btn btn-success">操作</div>
+                        <div class="btn btn-success">显示10条</div>
+                        <table class="table" id="bodyList">
+
+                        </table>
+
+                        <!--分页-->
+                        <nav aria-label="Page navigation" style="text-align: right;">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <!--发起任务，默认隐藏-->
+                    <div class="lanuch-task-page">
+                        <div class="panel panel-default">
+                            <div class="panel-heading js-lanuch-job">
+                                <span class="back-to-list">返回</span>
+                                <span class="lanuch-job-name"></span>
+                            </div>
+                            <div class="panel-body">
+                                <form id="form-lanuch-info" class="form-horizontal">
+
+                                </form>
+                            </div>
+                            <div class="panel-footer">
+                                <button class="btn btn-danger">编译部署</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--统一多种模态框-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+                <button type="button" id="confirmBtn" class="btn btn-primary">ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+<script src="../../js/lib/utils.js"></script>
+<script src="../js/deploy.js"></script>

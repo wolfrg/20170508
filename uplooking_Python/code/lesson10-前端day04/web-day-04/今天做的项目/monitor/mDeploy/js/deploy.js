@@ -104,6 +104,7 @@ $(function(){
                     optionValue:"roleId",
                     optionText:"roleName",
                     doubleMove:true,
+                    
                 });
             })
         },

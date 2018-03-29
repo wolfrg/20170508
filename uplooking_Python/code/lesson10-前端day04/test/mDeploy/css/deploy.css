@@ -1,0 +1,33 @@
+.content-main{
+    padding: 10px;
+}
+.lanuch-task-page{
+    display: none;
+}
+.lanuch-task-page .back-to-list{
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 20px;
+}
+.lanuch-task-page .panel-heading{
+    background-color: #00BCD4;
+}
+#bodyList{
+    margin-top: 20px;
+}
+#form-lanuch-info {
+    color: #000000;
+}
+.js-machine-sel{
+    width: 17px;
+}
+#exampleModal .modal-dialog{
+    z-index: 9999;
+}
+#exampleModal .box2 select ,#exampleModal .box1 select{
+    min-height: 172px;
+    /* important; */
+}
+#exampleModal .btn-box .btn{
+    /* border:; */
+}

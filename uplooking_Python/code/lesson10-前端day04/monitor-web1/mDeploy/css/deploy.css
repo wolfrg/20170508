@@ -1,6 +1,7 @@
 .content-main{
     padding: 10px;
 }
+/*发起任务*/
 .lanuch-task-page{
     display: none;
 }
@@ -12,22 +13,24 @@
 .lanuch-task-page .panel-heading{
     background-color: #00BCD4;
 }
+/*表格样式*/
 #bodyList{
     margin-top: 20px;
 }
 #form-lanuch-info {
     color: #000000;
 }
+/*选择机器的图标的大小*/
 .js-machine-sel{
     width: 17px;
 }
+/*重新覆盖选择机器的左右选择框的样式*/
 #exampleModal .modal-dialog{
     z-index: 9999;
 }
 #exampleModal .box2 select ,#exampleModal .box1 select{
-    min-height: 172px;
-    important;
+    min-height: 172px;!important;
 }
 #exampleModal .btn-box .btn{
-    border:;
+    border: 0;
 }

@@ -1,0 +1,9 @@
+/*将右侧的图表在屏幕中居中显示*/
+.js-right-part {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: 64px auto;
+}
