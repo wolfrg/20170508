@@ -131,18 +131,22 @@
                     url:'/lan',
                     data:'json',
                     success:function(json){
-                        var str='';
-                        $.each(json,function(index,value){
-                                str+='<tr>\
-                                        <td>'+ valued.id +' </td>\
-                                        <td>'+ valued.username +' </td>\
-                                        <td>'+ valued.position +' </td>\
-                                        <td>'+ valued.ipaddr +' </td>\
-                                        <td>'+ valued.remark +' </td>\
-                                      </tr>';
-                        })
-                        // $("#tbody").html(strs.join(""));
-                        $('#tbody').html(str)
+                        console.log(json)
+                        json=JSON.parse(json);
+                        var strs=["<table>"];
+                        // alert(typeof(json)+"--"+json.length);
+                        for(var k in json){
+                                strs.push("<tr>");
+                                var sub=json[k];
+                                console.log(sub);
+                                for(var j=0;j<sub.length;j++){
+                                        strs.push('<td>'+sub[j]+'</td>')
+                                }
+                                strs.push('</tr>');
+                        }
+                        strs.push("</table>");
+                        $("#tbody").html(strs.join(""));
+                        //$('#tbody').html(str)
             
                     },
             

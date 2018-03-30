@@ -1,6 +1,7 @@
 #coding:utf8
 from flask import Flask, request, render_template
 import MySQLdb
+import json
 
 db = MySQLdb.connect("localhost", "root", "123321", "python01",charset='utf8')
 app = Flask(__name__)
@@ -34,6 +35,28 @@ def insert_sql():
 def myajax():
     return render_template('ajax.html')
     #pass
-    
+
+@app.route('/lan',methods=['GET','POST'])    
+def lan():
+    cursor = db.cursor()
+    sql = "SELECT * FROM user_ip_info"
+    cursor.execute(sql)
+    row_headers=[x[0] for x in cursor.description]
+    results = cursor.fetchall()
+    data=[]
+    for result in results:
+        data.append(dict(zip(row_headers,result)))
+
+
+    # return render_template('/Lan/lan.html',results=results)  
+    # data = []
+    # content = {}
+    # for result in results:
+    #     content = {'id':result[0],'username':result[1],'position':result[2],'ipaddr':result[3],'remark':result[4]}
+    #     data.append(content)
+    #     content = {}
+    return json.dumps(data)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
