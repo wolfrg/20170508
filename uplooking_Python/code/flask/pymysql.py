@@ -43,19 +43,23 @@ def lan():
     cursor.execute(sql)
     row_headers=[x[0] for x in cursor.description]
     results = cursor.fetchall()
+    
+    # return json.dumps(results)
+
     data=[]
     for result in results:
         data.append(dict(zip(row_headers,result)))
+    return json.dumps(data) 
 
-
-    # return render_template('/Lan/lan.html',results=results)  
+ 
     # data = []
     # content = {}
     # for result in results:
     #     content = {'id':result[0],'username':result[1],'position':result[2],'ipaddr':result[3],'remark':result[4]}
     #     data.append(content)
     #     content = {}
-    return json.dumps(data)
+    # return json.dumps(data)    
+    
 
 
 if __name__ == '__main__':

@@ -4,7 +4,23 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
+        {
+            "name": "Flask",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${config:python.pythonPath}",
+            "module": "flask",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "FLASK_APP": "${workspaceFolder}/app.py"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ]
+        },
         {
             "type": "chrome",
             "request": "attach",

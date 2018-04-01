@@ -1,0 +1,87 @@
+{"message": "success",
+  "code": 1,
+  "data": {
+    "detail": [
+      {
+        "domain": "103.199.228.171",
+        "type": "CNAME",
+        "line": 771,
+        "ttl": 3949,
+        "enable": "0",
+        "name": "baidu"
+      },
+      {
+        "domain": "203.81.245.129",
+        "type": "CNAME",
+        "line": 419,
+        "ttl": 68,
+        "enable": "0",
+        "name": "baidu"
+      },
+      {
+        "domain": "103.199.228.172",
+        "type": "CNAME",
+        "line": 395,
+        "ttl": 386,
+        "enable": "0",
+        "name": "aiqiyi"
+      },
+      {
+        "domain": "122.14.206.157",
+        "type": "CNAME",
+        "line": 233,
+        "ttl": 239,
+        "enable": "0",
+        "name": "lenovo"
+      },
+      {
+        "domain": "103.199.228.171",
+        "type": "CNAME",
+        "line": 771,
+        "ttl": 3949,
+        "enable": "0",
+        "name": "baidu"
+      },
+      {
+        "domain": "203.81.245.129",
+        "type": "CNAME",
+        "line": 419,
+        "ttl": 68,
+        "enable": "0",
+        "name": "baidu"
+      },
+      {
+        "domain": "103.199.228.172",
+        "type": "CNAME",
+        "line": 395,
+        "ttl": 386,
+        "enable": "0",
+        "name": "aiqiyi"
+      },
+      {
+        "domain": "122.14.207.210",
+        "type": "CNAME",
+        "line": 621,
+        "ttl": 612,
+        "enable": "1",
+        "name": "kuwo"
+      },
+      {
+        "domain": "203.81.244.254",
+        "type": "CNAME",
+        "line": 132,
+        "ttl": 2318,
+        "enable": "0",
+        "name": "tengxun"
+      },
+      {
+        "domain": "122.14.206.157",
+        "type": "CNAME",
+        "line": 233,
+        "ttl": 239,
+        "enable": "0",
+        "name": "lenovo"
+      }
+    ]
+  }
+}
