@@ -12,7 +12,7 @@ def query_all():
     sql = "SELECT * FROM user_ip_info"
     cursor.execute(sql)
     results = cursor.fetchall()
-    return render_template('index.html', results=results)
+    return render_template('index.t.html', results=results)
 
 
 @app.route('/delete',methods=['GET','POST'])
