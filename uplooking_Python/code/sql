@@ -1,0 +1,11 @@
+insert into user_ip_info (id,username,position,ipaddr,remark) values (1,'于大宝','前锋','192.168.0.1','足球');
+insert into user_ip_info (id,username,position,ipaddr,remark) values (2,'高领','后卫','192.168.0.2','足球');
+insert into user_ip_info (id,username,position,ipaddr,remark) values (3,'马大姐','守门员','192.168.0.3','足球');
+insert into user_ip_info (id,username,position,ipaddr,remark) values (4,'曾诚','边路','192.168.0.4','足球');
+insert into user_ip_info (id,username,position,ipaddr,remark) values (5,'贝尔','捡球的','192.168.0.5','足球');
+insert into user_ip_info (id,username,position,ipaddr,remark) values (6,'乔丹','后卫','192.168.0.6','足球');
+
+
+
+create table map_tree(id int not null,name varchar(50),cname varchar(50),node_type varchar(40),pid int);
+insert into  map_tree (id,name,cname,node_type,pid) values(1,'建国集团','建国','cop',0);

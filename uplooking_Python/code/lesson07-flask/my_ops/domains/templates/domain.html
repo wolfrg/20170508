@@ -28,44 +28,53 @@
     <div class="right-header">
         <div class="user-info">
             <img class="user-img" src="/static/img/monitor-user.svg" alt="">
-            <span class="user-name">王雪君</span>
+            <span class="user-name">冯瑞钢</span>
         </div>
         <div class="exit-btn">退出登录</div>
     </div>
 
 </div>
+
 <div class="container-fluid">
     <div class="row">
+        <div class="col-md-3 js-left-part">
+            <div class="float-tree">
+                <ul class="tree-box ztree" id="treelist" >
 
-        <div class="col-md-9 js-right-part">
+                </ul>
+                <div class="slide-control icon-chevron-left js-slide-tree"></div>
+            </div>
+
+        </div>
+
+        <div class="col-md-9">
             <div class="center-main">
 
                 <div class="head-tab">
                     <ul class="nav nav-pills js-main-tabs">
-                        <li role="presentation" id="domain" class="active" data-menu="1"><a href="/domains/index">域名管理</a></li>
-                        <li role="presentation" id="machine" data-menu="2"><a href="/hosts/index">机器信息</a></li>
-                        <li role="presentation" id="nodemsg" data-menu="3"><a href="/tree/index">节点信息</a></li>
-                        <li role="presentation" id="deploy" data-menu="4"><a href="/deploy/index">部署系统</a></li>
-                    </ul>
+                        <li><a href="">域名管理</a></li>
+                        <li><a href="">机器信息</a></li>
+                        <li><a href="">节点信息</a></li>
+                        <li><a href="">部署系统</a></li>
 
+                    </ul>
                 </div>
+
                 <div class="content-main">
                     <ul class="nav nav-tabs domainNav js-sub-tabs">
                         <li role="presentation" class="active" data-sub="1"><a href="#">记录管理</a></li>
-                        <li role="presentation" data-sub="2" ><a href="#">预案管理</a></li>
-                        <li role="presentation" data-sub="3" ><a href="#">操作日志</a></li>
-                        <li role="presentation" data-sub="4" ><a href="#">DNSPod日志</a></li>
+                        <li role="presentation" data-sub="2"><a href="#">预案管理</a></li>
+                        <li role="presentation" data-sub="3"><a href="#">操作日志</a></li>
+                        <li role="presentation" data-sub="4"><a href="#">DNSPod日志</a></li>
                     </ul>
-                    <div class="panel panel-default">
-                        <!-- Default panel contents -->
-                        <div class="panel-heading">DNS记录</div>
 
-                        <!-- Table -->
-                        <table class="table" id="bodyList">
-                        </table>
-                    </div>
-                    <!--分页-->
-                    <nav aria-label="Page navigation" style="text-align: right;">
+                    <table class="table" id="bodyList">
+                    </table>
+                    
+                </div>
+
+                <!--分页-->
+                <nav aria-label="Page navigation" style="text-align: right;">
                         <ul class="pagination">
                             <li>
                                 <a href="#" aria-label="Previous">
@@ -82,9 +91,11 @@
                             </li>
                         </ul>
                     </nav>
-                </div>
+
+
             </div>
         </div>
+
     </div>
 </div>
 
