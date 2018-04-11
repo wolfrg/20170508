@@ -6,6 +6,7 @@ import json
 db = MySQLdb.connect("localhost", "root", "123321", "python01",charset='utf8')
 app = Flask(__name__)
 
+# index views
 @app.route('/')
 def query_all():
     cursor = db.cursor()
@@ -14,6 +15,14 @@ def query_all():
     results = cursor.fetchall()
     return render_template('index.t.html', results=results)
 
+
+@app.route('/tree')
+def tree_views():
+    cursor = db.cursor()
+    sql = "SELECT * FROM map_tree"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    return render_template('index.t.html',results=results)
 
 @app.route('/delete',methods=['GET','POST'])
 def update_sql():
@@ -36,6 +45,7 @@ def myajax():
     return render_template('ajax.html')
     #pass
 
+#get right table api
 @app.route('/lan',methods=['GET','POST'])    
 def lan():
     cursor = db.cursor()
@@ -61,6 +71,19 @@ def lan():
     # return json.dumps(data)    
     
 
+#get left tree table api
+@app.route('/tree/all',methods=['GET','POST'])
+def get_tree_all():
+    cursor = db.cursor()
+    sql = "SELECT * FROM map_tree"
+    cursor.execute(sql)
+    row_headers = [x[0] for x in cursor.description]
+    results = cursor.fetchall()
+
+    data = []
+    for result in results:
+        data.append(dict(zip(row_headers,result)))
+    return json.dumps(data)    
 
 if __name__ == '__main__':
     app.run(debug=True)

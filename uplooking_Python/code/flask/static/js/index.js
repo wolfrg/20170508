@@ -12,10 +12,12 @@ $(function(){
 
         },
 
+
        
         init:function(){
-            // var _this = this;
-            this.menuClick();
+            var _this = this;
+            _this.menuClick();
+            public_func.treeList();
         }
     };
 
