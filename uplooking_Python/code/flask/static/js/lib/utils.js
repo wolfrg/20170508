@@ -83,7 +83,7 @@ var public_func = {
 	// 树---重命名节点方法（重要）
 	onRename: function (e, treeId, treeNode, isCancel) {
 		var _this = this;
-		var testEditNodeApi = 'http://www.nodetest.com/node/edititem', //  编辑节点的接口，改成你自己的
+		var testEditNodeApi = 'http://127.0.0.1:5000/tree/node/rename', //  编辑节点的接口，改成你自己的
 			param = {};
 
 		param.thisId = treeNode.id;  // 该编辑节点的id
@@ -220,10 +220,16 @@ var public_func = {
 
 
 		
-		$.get('/tree/all', function (response) {
-			// var setting ={};
- 			$.fn.zTree.init($("#treelist"), setting, response); 
-		}, "json");
+		// $.get('/tree/all', function (response) {
+		// 	 var setting ={};
+ 	 	//	$.fn.zTree.init($("#treelist"), setting, response); 
+		// }, "json");
+
+
+		$.getJSON('/tree/all',function(response) {
+			$.fn.zTree.init($("#treelist"),setting,response);
+
+		});
 
 	},
 

@@ -10,18 +10,20 @@ app = Flask(__name__)
 # index views
 @app.route('/')
 def show_index():
+    # cursor = db.cursor()
+    # sql = "SELECT * FROM user_ip_info"
+    # cursor.execute(sql)
+    # results = cursor.fetchall()
     return render_template('index.t.html')
 
-#index addBtn views
-@app.route('/addData')
-def add_Data():
-    id = request.form.get('id')
-    username = request.form.get('username')
-    position = request.form.get('position')
-    ipaddr = request.form.get('ipaddr')
-    remark = request.form.get('remark')
 
-
+# @app.route('/tree')
+# def tree_views():
+#     cursor = db.cursor()
+#     sql = "SELECT * FROM map_tree"
+#     cursor.execute(sql)
+#     results = cursor.fetchall()
+#     return render_template('index.t.html',results=results)
 
 @app.route('/delete',methods=['GET','POST'])
 def update_sql():
@@ -34,11 +36,10 @@ def update_sql():
 @app.route('/insert',methods=['GET','POST'])
 def insert_sql():
     cursor = db.cursor()
-    sql = "insert into user_ip_info (id,username,position,ipaddr,remark) values (%s,%s,%s,%s,%s)"
-    params = (id,username,position,ipaddr,remark)
-    result = cursor.execute(sql,params)
+    sql = "insert into user_ip_info (id,username,position,ipaddr,remark) values (7,'王超','前锋','192.168.0.7','足球')"
+    cursor.execute(sql)
     db.commit()
-    return  result
+    return '插入一行数据'
 
 @app.route('/ajax.html',methods=['GET','POST'])
 def myajax():
@@ -54,12 +55,22 @@ def show_table():
     row_headers=[x[0] for x in cursor.description]
     results = cursor.fetchall()
     
+    # return json.dumps(results)
+
     data=[]
     for result in results:
         data.append(dict(zip(row_headers,result)))
     return json.dumps(data) 
 
-  
+ 
+    # data = []
+    # content = {}
+    # for result in results:
+    #     content = {'id':result[0],'username':result[1],'position':result[2],'ipaddr':result[3],'remark':result[4]}
+    #     data.append(content)
+    #     content = {}
+    # return json.dumps(data)    
+    
 
 #get left tree table api
 @app.route('/tree/all',methods=['GET','POST'])
@@ -75,7 +86,7 @@ def get_tree_all():
         data.append(dict(zip(row_headers,result)))
     return json.dumps(data)    
 
-# rename tree node api
+# rename tree node 
 @app.route('/node/rename',methods=["POST"])
 def rename_node(name,id):
     id = request.form.get('id')

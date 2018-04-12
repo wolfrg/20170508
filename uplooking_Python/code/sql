@@ -6,6 +6,12 @@ insert into user_ip_info (id,username,position,ipaddr,remark) values (5,'贝尔'
 insert into user_ip_info (id,username,position,ipaddr,remark) values (6,'乔丹','后卫','192.168.0.6','足球');
 
 
+#ztree
 
 create table map_tree(id int not null,name varchar(50),cname varchar(50),node_type varchar(40),pid int);
 insert into  map_tree (id,name,cname,node_type,pid) values(1,'建国集团','建国','cop',0);
+insert into map_tree (id,name,cname,node_type,pid) values (2,'阿里','ali','cop',1);
+insert into map_tree (id,name,cname,node_type,pid) values (3,'腾讯','tent','cop',2);
+insert into map_tree (id,name,cname,node_type,pid) values (4,'百度','baidu','cop',2);
+insert into map_tree (id,name,cname,node_type,pid) values (5,'google','google','cop',1);
+insert into map_tree (id,name,cname,node_type,pid) values (6,'脸书','facebook','cop',5);
