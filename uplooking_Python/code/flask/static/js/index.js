@@ -13,11 +13,65 @@ $(function(){
         },
 
 
+          // 点击添加按钮，添加任务
+        taskActionPage: function(){
+            var _this = this;
+
+            $('#exampleModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget),
+                    actionType = button.data('for'),
+                    modal = $(_this);
+
+                if(actionType == 'add'){
+                    $('#exampleModalLabel').text('添加员工信息');
+                    _this.addTaskItem();
+
+                }else if(actionType == 'edit'){
+                    $('#exampleModalLabel').text('编辑任务');
+                    _this.editTaskItem();
+                }
+
+            })
+        },
+
+        // 添加 编号 用户名 职位 IP地址  备注 function
+        addTaskItem: function(){
+            var _this = this,
+                formTpl = '';
+            formTpl += '<div>\
+                            <label>编号:</label>\
+                            <input type="text">\
+                        </div>\
+                        <div>\
+                            <label>用户名:</label>\
+                            <input type="text">\
+                        </div>\
+                        <div>\
+                            <label>职位:</label>\
+                            <input type="text">\
+                        </div>\
+                        <div>\
+                            <label>IP地址:</label>\
+                            <input type="text">\
+                        </div>\
+                        <div>\
+                            <label for="remark">备注:</label>\
+                            <input type="text">\
+                        </div>';
+
+            $('#exampleModal').find('form').html(formTpl);
+
+
+        },
+
+
        
         init:function(){
             var _this = this;
             _this.menuClick();
+            _this.taskActionPage();
             public_func.treeList();
+            public_func.showInfo();
         }
     };
 

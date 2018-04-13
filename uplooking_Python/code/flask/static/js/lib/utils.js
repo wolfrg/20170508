@@ -204,7 +204,7 @@ var public_func = {
 			},
 			data: {
 				simpleData: {
-					enable: true
+				enable: true
 				}
 			},
 			callback: {
@@ -227,11 +227,14 @@ var public_func = {
 
 
 		$.getJSON('/tree/all',function(response) {
+
 			$.fn.zTree.init($("#treelist"),setting,response);
 
 		});
 
 	},
+
+
 
 	// 子菜单点击
 	subMenuClick: function () {
@@ -311,6 +314,50 @@ var public_func = {
 			}
 
 		});
+	},
+
+		//index html right table
+	showInfo:function() {
+		    $.ajax({
+                type: "GET",
+                url: '/getUserInfo',
+                data: 'json',
+                success: function (json) {
+                        var str = '';
+                        str += '<thead><tr><th>编号</th><th>用户名</th><th>职位</th><th>IP地址</th><th>备注</th></tr></thead>';
+                        json = JSON.parse(json);
+                        $.each(json, function (index, valued) {
+                                str += '<tr>\
+                                        <td>'+ valued.id + ' </td>\
+                                        <td>'+ valued.username + ' </td>\
+                                        <td>'+ valued.position + ' </td>\
+                                        <td>'+ valued.ipaddr + ' </td>\
+                                        <td>'+ valued.remark + ' </td>\
+                                      </tr>';
+                        })
+                        // str += '</tbody>';
+                        // $("#tbody").html(strs.join(""));
+                        $('#tbody').html(str)
+
+                },
+
+        }
+
+
+        );
+	},
+
+	//提交添加的用户信息
+	addInfo:function () {
+
+		$.ajax({
+			type:'POST',
+			url:'addUserInfo',
+			data:data,
+			sucess:sucess,
+			dataType:dataType
+		});
+
 	},
 
 	// 退出按钮

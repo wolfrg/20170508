@@ -12,41 +12,11 @@ app = Flask(__name__)
 def show_index():
     return render_template('index.t.html')
 
-#index addBtn views
-@app.route('/addData')
-def add_Data():
-    id = request.form.get('id')
-    username = request.form.get('username')
-    position = request.form.get('position')
-    ipaddr = request.form.get('ipaddr')
-    remark = request.form.get('remark')
 
 
 
-@app.route('/delete',methods=['GET','POST'])
-def update_sql():
-    cursor = db.cursor()
-    sql = "delete from user_ip_info where id=2"
-    cursor.execute(sql)
-    db.commit()
-    return '将要删除这行数据'
-
-@app.route('/insert',methods=['GET','POST'])
-def insert_sql():
-    cursor = db.cursor()
-    sql = "insert into user_ip_info (id,username,position,ipaddr,remark) values (%s,%s,%s,%s,%s)"
-    params = (id,username,position,ipaddr,remark)
-    result = cursor.execute(sql,params)
-    db.commit()
-    return  result
-
-@app.route('/ajax.html',methods=['GET','POST'])
-def myajax():
-    return render_template('ajax.html')
-    #pass
-
-#get right table api
-@app.route('/right-table',methods=['GET','POST'])    
+#get right user info table api
+@app.route('/getUserInfo',methods=['GET','POST'])    
 def show_table():
     cursor = db.cursor()
     sql = "SELECT * FROM user_ip_info"
@@ -59,7 +29,6 @@ def show_table():
         data.append(dict(zip(row_headers,result)))
     return json.dumps(data) 
 
-  
 
 #get left tree table api
 @app.route('/tree/all',methods=['GET','POST'])
@@ -73,7 +42,34 @@ def get_tree_all():
     data = []
     for result in results:
         data.append(dict(zip(row_headers,result)))
-    return json.dumps(data)    
+    return json.dumps(data)
+
+
+
+
+#index add user info views
+@app.route('/addData')
+def add_Data():
+    id = request.form.get('id')
+    username = request.form.get('username')
+    position = request.form.get('position')
+    ipaddr = request.form.get('ipaddr')
+    remark = request.form.get('remark')
+
+
+#add data api
+@app.route('/addUserInfo',methods=['GET','POST'])
+def insert_sql():
+    cursor = db.cursor()
+    sql = "insert into user_ip_info (id,username,position,ipaddr,remark) values (%s,%s,%s,%s,%s)"
+    params = (id,username,position,ipaddr,remark)
+    result = cursor.execute(sql,params)
+    db.commit()
+    return  result
+
+  
+
+    
 
 # rename tree node api
 @app.route('/node/rename',methods=["POST"])
@@ -92,6 +88,19 @@ def rename_node(name,id):
 
     return results
 
+@app.route('/delete',methods=['GET','POST'])
+def update_sql():
+    cursor = db.cursor()
+    sql = "delete from user_ip_info where id=2"
+    cursor.execute(sql)
+    db.commit()
+    return '将要删除这行数据'
+
+
+@app.route('/ajax.html',methods=['GET','POST'])
+def myajax():
+    return render_template('ajax.html')
+    #pass
 
 
 if __name__ == '__main__':
