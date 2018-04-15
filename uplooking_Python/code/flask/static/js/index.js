@@ -13,7 +13,7 @@ $(function(){
         },
 
 
-          // 点击添加按钮，添加任务
+        // 点击添加按钮，添加任务
         taskActionPage: function(){
             var _this = this;
 
@@ -40,23 +40,23 @@ $(function(){
                 formTpl = '';
             formTpl += '<div>\
                             <label>编号:</label>\
-                            <input type="text">\
+                            <input type="text" name="num" id="num">\
                         </div>\
                         <div>\
                             <label>用户名:</label>\
-                            <input type="text">\
+                            <input type="text" name="username" id="username">\
                         </div>\
                         <div>\
                             <label>职位:</label>\
-                            <input type="text">\
+                            <input type="text" name="position" id="positon">\
                         </div>\
                         <div>\
                             <label>IP地址:</label>\
-                            <input type="text">\
+                            <input type="text" name="ipaddr" id="ipaddr">\
                         </div>\
                         <div>\
                             <label for="remark">备注:</label>\
-                            <input type="text">\
+                            <input type="text" name="remark" id="remark">\
                         </div>';
 
             $('#exampleModal').find('form').html(formTpl);
@@ -72,6 +72,7 @@ $(function(){
             _this.taskActionPage();
             public_func.treeList();
             public_func.showInfo();
+            public_func.addInfo();
         }
     };
 

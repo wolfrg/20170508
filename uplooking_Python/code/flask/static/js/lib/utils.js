@@ -350,13 +350,33 @@ var public_func = {
 	//提交添加的用户信息
 	addInfo:function () {
 
+		var id = $('#id').val();
+		var name = $('#name').val();
+		var position = $('#position').val();
+		var ipaddr = $('#ipaddr').val();
+		var remark = $('#remark').val();
+
+		 var  data = {};
+		 data.id = id;
+		 data.name = name;
+		 data.position = position;
+		 data.ipaddr = ipaddr;
+		 data.remark = remark;
+
+
 		$.ajax({
 			type:'POST',
 			url:'addUserInfo',
 			data:data,
-			sucess:sucess,
+			sucess:function(data) {
+				console.log(data);
+
+			},
 			dataType:dataType
 		});
+		// 序列化的方式
+		// var form_data = $('#form_data').serialize();
+		// alert(form_data);
 
 	},
 
