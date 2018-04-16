@@ -48,7 +48,7 @@ $(function(){
                         </div>\
                         <div>\
                             <label>职位:</label>\
-                            <input type="text" name="position" id="positon">\
+                            <input type="text" name="position" id="position">\
                         </div>\
                         <div>\
                             <label>IP地址:</label>\
@@ -72,27 +72,31 @@ $(function(){
             _this.taskActionPage();
             public_func.treeList();
             public_func.showInfo();
-            public_func.addInfo();
+            $('#submitbtn').on('click',function(e){
+                public_func.addInfo();
+               
+            });
+            
         }
     };
 
-    $(".dbtn").click(function(){
-		$.get("/delete",function(data, status){
-			alert("数据: " + data + "\n状态: " + status);
-		});
-    });
+    // $(".dbtn").click(function(){
+	// 	$.get("/delete",function(data, status){
+	// 		alert("数据: " + data + "\n状态: " + status);
+	// 	});
+    // });
     
-    $(".addBtn").click(function(){
-        $.get("insert",function(data,status){
-            alert("数据：" + data + "\n状态：" + status);
-        });
-    });
+    // $(".addBtn").click(function(){
+    //     $.get("insert",function(data,status){
+    //         alert("数据：" + data + "\n状态：" + status);
+    //     });
+    // });
 
-    $("button").click(function(){
-        $.ajax({url:"/ajax.html",success:function(result){
-            $("#div1").html(result);
-        }});
-    });
+    // $("button").click(function(){
+    //     $.ajax({url:"/ajax.html",success:function(result){
+    //         $("#div1").html(result);
+    //     }});
+    // });
 
     monitor.init()
 })

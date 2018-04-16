@@ -12,6 +12,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/modal')
+def modal_list():
+	return render_template('modal.html')
 
 
 if __name__=='__main__':

@@ -1,6 +1,7 @@
 #coding:utf8
 from flask import Flask, request, render_template
 import MySQLdb
+from flask import jsonify
 import json
 
 db = MySQLdb.connect("localhost", "root", "123321", "python01",charset='utf8')
@@ -48,24 +49,30 @@ def get_tree_all():
 
 
 #index add user info views
-@app.route('/addData')
-def add_Data():
+# @app.route('/addData')
+# def add_Data():
+#     id = request.form.get('id')
+#     username = request.form.get('username')
+#     position = request.form.get('position')
+#     ipaddr = request.form.get('ipaddr')
+#     remark = request.form.get('remark')
+
+
+#add data api
+@app.route('/addUserInfo',methods=['POST'])
+def insert_sql():
+    cursor = db.cursor()
     id = request.form.get('id')
     username = request.form.get('username')
     position = request.form.get('position')
     ipaddr = request.form.get('ipaddr')
     remark = request.form.get('remark')
 
-
-#add data api
-@app.route('/addUserInfo',methods=['GET','POST'])
-def insert_sql():
-    cursor = db.cursor()
     sql = "insert into user_ip_info (id,username,position,ipaddr,remark) values (%s,%s,%s,%s,%s)"
     params = (id,username,position,ipaddr,remark)
     result = cursor.execute(sql,params)
     db.commit()
-    return  result
+    return  jsonify(result)
 
   
 
@@ -97,10 +104,10 @@ def update_sql():
     return '将要删除这行数据'
 
 
-@app.route('/ajax.html',methods=['GET','POST'])
-def myajax():
-    return render_template('ajax.html')
-    #pass
+# @app.route('/ajax.html',methods=['GET','POST'])
+# def myajax():
+#     return render_template('ajax.html')
+#     #pass
 
 
 if __name__ == '__main__':
