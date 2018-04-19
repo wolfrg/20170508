@@ -34,33 +34,63 @@ $(function(){
             })
         },
 
-        // 添加 编号 用户名 职位 IP地址  备注 function
+        // 添加: 编号 用户名 职位 IP地址  备注 function
         addTaskItem: function(){
             var _this = this,
                 formTpl = '';
-            formTpl += '<div>\
-                            <label>编号:</label>\
-                            <input type="text" name="num" id="num">\
+            formTpl += '<div class="form-group">\
+                            <label class="control-label">编号:</label>\
+                            <input type="text" class="form-control" name="num" id="num">\
                         </div>\
                         <div>\
-                            <label>用户名:</label>\
-                            <input type="text" name="username" id="username">\
+                            <label  class="control-label">用户名:</label>\
+                            <input type="text"  class="form-control"  name="username" id="username">\
                         </div>\
                         <div>\
-                            <label>职位:</label>\
-                            <input type="text" name="position" id="position">\
+                            <label class="control-label">职位:</label>\
+                            <input type="text"  class="form-control" name="position" id="position">\
                         </div>\
                         <div>\
-                            <label>IP地址:</label>\
-                            <input type="text" name="ipaddr" id="ipaddr">\
+                            <label class="control-label">IP地址:</label>\
+                            <input type="text" class="form-control" name="ipaddr" id="ipaddr">\
                         </div>\
                         <div>\
-                            <label for="remark">备注:</label>\
-                            <input type="text" name="remark" id="remark">\
+                            <label class="control-label">备注:</label>\
+                            <input type="text" class="form-control" name="remark" id="remark">\
                         </div>';
 
             $('#exampleModal').find('form').html(formTpl);
 
+
+        },
+
+        // click edit button show edit view
+        editTaskItem:function(){
+
+            var _this = this,
+                formTpl = '';
+            formTpl += '<div class="form-group">\
+                            <label class="control-label">编号:</label>\
+                            <input type="text" class="form-control" name="num" id="num">\
+                        </div>\
+                        <div>\
+                            <label  class="control-label">用户名:</label>\
+                            <input type="text"  class="form-control"  name="username" id="username">\
+                        </div>\
+                        <div>\
+                            <label class="control-label">职位:</label>\
+                            <input type="text"  class="form-control" name="position" id="position">\
+                        </div>\
+                        <div>\
+                            <label class="control-label">IP地址:</label>\
+                            <input type="text" class="form-control" name="ipaddr" id="ipaddr">\
+                        </div>\
+                        <div>\
+                            <label class="control-label">备注:</label>\
+                            <input type="text" class="form-control" name="remark" id="remark">\
+                        </div>';
+
+            $('#exampleModal').find('form').html(formTpl);
 
         },
 
@@ -72,7 +102,9 @@ $(function(){
             _this.taskActionPage();
             public_func.treeList();
             public_func.showInfo();
+
             $('#submitbtn').on('click',function(e){
+                if action = edit 
                 public_func.addInfo();
                
             });

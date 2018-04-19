@@ -187,6 +187,7 @@ $(function () {
 			var _this = this;
 			_this.taskDataGet();
 			public_func.treeList();
+			public_func.checkboxFun();
 
 			public_func.subMenuClick()
 

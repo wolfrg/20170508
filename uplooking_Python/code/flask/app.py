@@ -11,6 +11,7 @@ app = Flask(__name__)
 # index views
 @app.route('/')
 def show_index():
+
     return render_template('index.t.html')
 
 
@@ -48,20 +49,13 @@ def get_tree_all():
 
 
 
-#index add user info views
-# @app.route('/addData')
-# def add_Data():
-#     id = request.form.get('id')
-#     username = request.form.get('username')
-#     position = request.form.get('position')
-#     ipaddr = request.form.get('ipaddr')
-#     remark = request.form.get('remark')
-
 
 #add data api
 @app.route('/addUserInfo',methods=['POST'])
 def insert_sql():
+    
     cursor = db.cursor()
+
     id = request.form.get('id')
     username = request.form.get('username')
     position = request.form.get('position')
@@ -74,7 +68,10 @@ def insert_sql():
     db.commit()
     return  jsonify(result)
 
-  
+
+# #edit user info api
+# @app.route('/editUserInfo',methods=['POST'])
+# def   
 
     
 

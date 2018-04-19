@@ -316,7 +316,7 @@ var public_func = {
 		});
 	},
 
-		//index html right table
+	//index html right table
 	showInfo:function() {
 		    $.ajax({
                 type: "GET",
@@ -324,19 +324,23 @@ var public_func = {
                 data: 'json',
                 success: function (json) {
                         var str = '';
-                        str += '<thead><tr><th>编号</th><th>用户名</th><th>职位</th><th>IP地址</th><th>备注</th></tr></thead>';
+                        str += '<thead><tr><th><input type="checkbox"></th><th>编号</th><th>用户名</th><th>职位</th><th>IP地址</th><th>备注</th><th>操作</th></tr></thead>';
                         json = JSON.parse(json);
                         $.each(json, function (index, valued) {
-                                str += '<tr>\
+                                str += '<tr><td><input type="checkbox"></td>\
                                         <td>'+ valued.id + ' </td>\
                                         <td>'+ valued.username + ' </td>\
                                         <td>'+ valued.position + ' </td>\
                                         <td>'+ valued.ipaddr + ' </td>\
                                         <td>'+ valued.remark + ' </td>\
+                                        <td>\
+                                        	<button class="btn btn-xs btn-info" data-for="edit" data-target="#exampleModal" data-toggle="modal">编辑</button>\
+                                        	<button class="btn btn-xs btn-danger">删除</button>\
+                                        </td>\
                                       </tr>';
                         })
-                        // str += '</tbody>';
-                        // $("#tbody").html(strs.join(""));
+                        str += '</tbody>';
+                    
                         $('#tbody').html(str)
 
                 },
@@ -379,7 +383,8 @@ var public_func = {
 				
 				
 			},
-			// dataType:dataType
+
+			dataType:"json"
 
 			
 		});
@@ -395,6 +400,36 @@ var public_func = {
 
 		
 		
+
+	},
+
+	// edit function
+
+	// editInfo:function() {
+	// 	var api = 'editUserInfo';
+	// 	$post(api,data,function(response){
+
+	// 	});
+	// },
+	editInfo:function(){
+
+		$.ajax({
+			type:'POST',
+			url:'/getUserInfo',
+			data:data,
+			success:function(response){
+				debugger
+				console.log(response)
+				var data = data;
+				var data_obj = eval("("+data+")");
+
+				$("#num").val(data_obj.id);
+				$("#username").val(data_obj.username);
+
+			},
+
+			dataType:'json'
+		});
 
 	},
 
