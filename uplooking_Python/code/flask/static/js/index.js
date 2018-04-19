@@ -103,10 +103,15 @@ $(function(){
             public_func.treeList();
             public_func.showInfo();
 
-            $('#submitbtn').on('click',function(e){
-                if action = edit 
+            $('#submitbtn').on('click.add',function(e){
+
                 public_func.addInfo();
                
+            });
+
+            $('#submibtn').on('click.edit',function(e){
+                public_func.editInfo();
+                
             });
             
         }

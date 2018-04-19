@@ -413,17 +413,21 @@ var public_func = {
 	// },
 	editInfo:function(){
 
+		// console.log('edit')
 		$.ajax({
 			type:'POST',
 			url:'/getUserInfo',
 			data:data,
-			success:function(response){
-				debugger
-				console.log(response)
-				var data = data;
-				var data_obj = eval("("+data+")");
 
-				$("#num").val(data_obj.id);
+			// id:data.id,
+
+			success:function(){
+				// debugger
+				//console.log(response)
+				 var response = data;
+				 var data_obj = eval("("+response+")");
+
+				$("#num").val(id);
 				$("#username").val(data_obj.username);
 
 			},
