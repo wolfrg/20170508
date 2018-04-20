@@ -15,6 +15,7 @@ $(function(){
 
         // 点击添加按钮，添加任务
         taskActionPage: function(){
+            debugger;
             var _this = this;
 
             $('#exampleModal').on('show.bs.modal', function (event) {
@@ -22,13 +23,15 @@ $(function(){
                     actionType = button.data('for'),
                     modal = $(_this);
 
+                var id=button.attr("v");
+
                 if(actionType == 'add'){
                     $('#exampleModalLabel').text('添加员工信息');
                     _this.addTaskItem();
 
                 }else if(actionType == 'edit'){
                     $('#exampleModalLabel').text('编辑任务');
-                    _this.editTaskItem();
+                    _this.editTaskItem(id);
                 }
 
             })
@@ -65,32 +68,74 @@ $(function(){
         },
 
         // click edit button show edit view
-        editTaskItem:function(){
+        editTaskItem:function(id){
 
-            var _this = this,
-                formTpl = '';
+            // console.log('edit')
+            
+        $.ajax({
+            type:'POST',
+            url:'/getUserInfo',
+            data:'data',
+
+
+            success:function(){
+
+            
+                
+                var listTpl = '';
+
+                // json = JSON.parse(json);
+                // console.log(json);
+                $.each(json, function (index, value) {
+                    listTpl += '<li class="items" data-id="'+value.num+'" data-username="'+value.username+'">'+value.name+ "</li>";
+                               
+                });
+                
+                    
+                // $('#exampleModal').val(listTpl);
+                
+
+            },
+
+
+
+            dataType:'json'
+        });
+
+            var body={
+                "id":"1",
+                "username":"1"
+            };
+       
+         /*  ajax("",params:{id:id},function(body){*/
+            var _this = this;
+            formTpl = '';
             formTpl += '<div class="form-group">\
-                            <label class="control-label">编号:</label>\
-                            <input type="text" class="form-control" name="num" id="num">\
-                        </div>\
-                        <div>\
-                            <label  class="control-label">用户名:</label>\
-                            <input type="text"  class="form-control"  name="username" id="username">\
-                        </div>\
-                        <div>\
-                            <label class="control-label">职位:</label>\
-                            <input type="text"  class="form-control" name="position" id="position">\
-                        </div>\
-                        <div>\
-                            <label class="control-label">IP地址:</label>\
-                            <input type="text" class="form-control" name="ipaddr" id="ipaddr">\
-                        </div>\
-                        <div>\
-                            <label class="control-label">备注:</label>\
-                            <input type="text" class="form-control" name="remark" id="remark">\
-                        </div>';
+                                <label class="control-label">编号:</label>\
+                                <input type="text" class="form-control" name="num" id="num" value="'+body.id+'">\
+                            </div>\
+                            <div>\
+                                <label  class="control-label">用户名:</label>\
+                                <input type="text"  class="form-control"  name="username" id="username" value="'+body.username+'">\
+                            </div>\
+                            <div>\
+                                <label class="control-label">职位:</label>\
+                                <input type="text"  class="form-control" name="position" id="position">\
+                            </div>\
+                            <div>\
+                                <label class="control-label">IP地址:</label>\
+                                <input type="text" class="form-control" name="ipaddr" id="ipaddr">\
+                            </div>\
+                            <div>\
+                                <label class="control-label">备注:</label>\
+                                <input type="text" class="form-control" name="remark" id="remark">\
+                            </div>';
 
-            $('#exampleModal').find('form').html(formTpl);
+                $('#exampleModal').find('form').html(formTpl);
+ 
+         
+
+
 
         },
 

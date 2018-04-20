@@ -334,8 +334,8 @@ var public_func = {
                                         <td>'+ valued.ipaddr + ' </td>\
                                         <td>'+ valued.remark + ' </td>\
                                         <td>\
-                                        	<button class="btn btn-xs btn-info" data-for="edit" data-target="#exampleModal" data-toggle="modal">编辑</button>\
-                                        	<button class="btn btn-xs btn-danger">删除</button>\
+                                        	<button class="btn btn-xs btn-info" data-for="edit" data-target="#exampleModal" v="'+valued.id+'" data-toggle="modal">编辑</button>\
+                                        	<button class="btn btn-xs btn-danger" v="'+valued.id+'">删除</button>\
                                         </td>\
                                       </tr>';
                         })
@@ -354,6 +354,7 @@ var public_func = {
 	//提交添加的用户信息
 	addInfo:function () {
 
+		// get input value
 		var id = $('#num').val();
 		var username = $('#username').val();
 		var position = $('#position').val();
@@ -412,23 +413,28 @@ var public_func = {
 	// 	});
 	// },
 	editInfo:function(){
+		alert(1)
 
 		// console.log('edit')
 		$.ajax({
 			type:'POST',
 			url:'/getUserInfo',
-			data:data,
-
-			// id:data.id,
+			data:'json',
 
 			success:function(){
-				// debugger
-				//console.log(response)
-				 var response = data;
-				 var data_obj = eval("("+response+")");
+				
+                var listTpl = '';
 
-				$("#num").val(id);
-				$("#username").val(data_obj.username);
+                // json = JSON.parse(json);
+                // console.log(json);
+                $.each(json, function (index, value) {
+                	listTpl += '<li class="items" data-id="'+value.num+'" data-username="'+value.username+'">'+value.name+ "</li>";
+                               
+                });
+                
+                    
+                $('#exampleModal').val(listTpl);
+				
 
 			},
 
