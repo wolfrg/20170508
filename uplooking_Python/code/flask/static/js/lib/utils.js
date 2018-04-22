@@ -390,6 +390,8 @@ var public_func = {
 			
 		});
 
+
+
 		// var api = '/addUserInfo'
 		// $.post(api,data,function(response) {
 		// 	if(response.code == 0) {
@@ -401,45 +403,6 @@ var public_func = {
 
 		
 		
-
-	},
-
-	// edit function
-
-	// editInfo:function() {
-	// 	var api = 'editUserInfo';
-	// 	$post(api,data,function(response){
-
-	// 	});
-	// },
-	editInfo:function(){
-		alert(1)
-
-		// console.log('edit')
-		$.ajax({
-			type:'POST',
-			url:'/getUserInfo',
-			data:'json',
-
-			success:function(){
-				
-                var listTpl = '';
-
-                // json = JSON.parse(json);
-                // console.log(json);
-                $.each(json, function (index, value) {
-                	listTpl += '<li class="items" data-id="'+value.num+'" data-username="'+value.username+'">'+value.name+ "</li>";
-                               
-                });
-                
-                    
-                $('#exampleModal').val(listTpl);
-				
-
-			},
-
-			dataType:'json'
-		});
 
 	},
 

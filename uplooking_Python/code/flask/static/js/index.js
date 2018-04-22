@@ -67,56 +67,25 @@ $(function(){
 
         },
 
+
+
         // click edit button show edit view
-        editTaskItem:function(id){
+        editTaskItem:function(){
 
-            // console.log('edit')
-            
-        $.ajax({
-            type:'POST',
-            url:'/getUserInfo',
-            data:'data',
-
-
-            success:function(){
-
-            
-                
-                var listTpl = '';
-
-                // json = JSON.parse(json);
-                // console.log(json);
-                $.each(json, function (index, value) {
-                    listTpl += '<li class="items" data-id="'+value.num+'" data-username="'+value.username+'">'+value.name+ "</li>";
-                               
-                });
-                
-                    
-                // $('#exampleModal').val(listTpl);
-                
-
-            },
-
-
-
-            dataType:'json'
-        });
-
-            var body={
-                "id":"1",
-                "username":"1"
+            var data = {
+            'id':'1',
+            'username':'fengruigang'
             };
-       
-         /*  ajax("",params:{id:id},function(body){*/
+
             var _this = this;
             formTpl = '';
             formTpl += '<div class="form-group">\
                                 <label class="control-label">编号:</label>\
-                                <input type="text" class="form-control" name="num" id="num" value="'+body.id+'">\
+                                <input type="text" class="form-control" name="num" id="num" value="'+data.id+'">\
                             </div>\
                             <div>\
                                 <label  class="control-label">用户名:</label>\
-                                <input type="text"  class="form-control"  name="username" id="username" value="'+body.username+'">\
+                                <input type="text"  class="form-control"  name="username" id="username" value="'+data.username+'">\
                             </div>\
                             <div>\
                                 <label class="control-label">职位:</label>\
@@ -139,46 +108,61 @@ $(function(){
 
         },
 
+        commitAdd:function() {
+            var _this = this;
+            $('#submitbtn').on('click.add',function(e){
+                 alert('commitAdd function')
+                public_func.addInfo();
+               
+            });
+
+        },
+
+        commitEdit:function() {
+            
+            var _this = this;
+            $('submitbtn1').on('click.edit',function(e){
+                alert('commitEdit function')
+                public_func.editInfo();
+            });
+
+        },
+
+
 
        
         init:function(){
             var _this = this;
             _this.menuClick();
             _this.taskActionPage();
+            
             public_func.treeList();
             public_func.showInfo();
+            _this.commitAdd();
+            _this.commitEdit();
+            // public_func.addInfo();
+            
+            //添加完信息后点击ok按钮，提交添加的事件
+            // $('#submitbtn').on('click.add',function(e){
+            //     alert('add')
 
-            $('#submitbtn').on('click.add',function(e){
-
-                public_func.addInfo();
+            //     public_func.addInfo();
                
-            });
+            // });
 
-            $('#submibtn').on('click.edit',function(e){
-                public_func.editInfo();
+            //编辑完信息后点击ok按钮，提交编辑的事件
+            // $('#submitbtn').on('click.edit',function(e){
+
+            //     public_func.editInfo();
+
+            //     alert('edit')
+
+       
                 
-            });
+            // });
             
         }
     };
-
-    // $(".dbtn").click(function(){
-	// 	$.get("/delete",function(data, status){
-	// 		alert("数据: " + data + "\n状态: " + status);
-	// 	});
-    // });
-    
-    // $(".addBtn").click(function(){
-    //     $.get("insert",function(data,status){
-    //         alert("数据：" + data + "\n状态：" + status);
-    //     });
-    // });
-
-    // $("button").click(function(){
-    //     $.ajax({url:"/ajax.html",success:function(result){
-    //         $("#div1").html(result);
-    //     }});
-    // });
 
     monitor.init()
 })

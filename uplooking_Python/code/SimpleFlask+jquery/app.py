@@ -16,6 +16,13 @@ def index():
 def modal_list():
 	return render_template('modal.html')
 
+@app.route('/mystring')
+def mystring():
+	return "This is my string."
+
+
+
+	
 
 if __name__=='__main__':
     app.run(host='0.0.0.0',port=5001,debug=True)

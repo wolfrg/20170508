@@ -1,0 +1,194 @@
+/*css reset*/
+html, body {
+    /*font: 12px/1.5 "Microsoft YaHei", tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;*/
+    font: 12px/1.5 PingFang SC,Lantinghei SC,Helvetica Neue,Helvetica,Arial,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,STHeitiSC-Light,simsun,\\5B8B\4F53,WenQuanYi Zen Hei,WenQuanYi Micro Hei,'sans-serif';
+    height: 100%;
+    overflow-y: hidden;
+    color: #000;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+fieldset, img {border: 0;}
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+ul,ol {list-style: none;}
+caption,th {text-align: left;}
+h1,h2,h3,h4,h5,h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+abbr, acronym {
+    border: 0;
+    font-variant: normal;
+}
+/*a{color:#fff;}*/
+a:link,a:hover,a:active{
+    text-decoration:none;
+    /*color:#fff;*/
+}
+a:link,a:hover,a:active{outline:0 none;}
+textarea{resize: none;}
+input,textarea,select{
+    outline: none;
+}
+.m-f-r{
+    float: right;
+}
+.m-f-l{
+    float: left;
+}
+
+/* bootstrap reset */
+.container-fluid {padding: 0;}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{padding: 0px;}
+.row {margin:0;}
+.form-horizontal .form-group {margin-left: 0; margin-right: 0;}
+.dropdown-menu {padding: 0;}
+.help-block {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: left;
+    color: #C6310E;
+}
+.form-group {margin: 0px;}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
+    background-color: #00b1ff;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
+    color:#000;
+}
+a{
+    color: #777;
+}
+a:hover, a:focus{
+    color: #555;
+}
+#exampleModal input{color: #000;}
+
+/* layout */
+.mt-hide{
+    display: none;
+}
+.mt-curosr{
+    cursor: pointer;
+}
+.center-main{
+    position: relative;
+}
+.exit-btn{
+    cursor: pointer;
+    color: #fff;
+    float: right;
+    margin-right: 15px;
+}
+.guide-head{
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    background: #000;
+    color:#fff;
+    height: 64px;
+    line-height: 64px;
+    -webkit-box-shadow: 0 2px 8px #f0f1f2;
+    box-shadow: 0 2px 8px #f0f1f2;
+    position: relative;
+    z-index: 10;
+}
+.sys-logo{
+    width: 40px;
+    margin-left: 20px;
+
+}
+.head-tab {
+    margin-top: 40px;
+    background-color: #ddd;
+}
+.content-main {
+    margin-top: 30px;
+    background-color: #f3f3f3;
+}
+.head-tab, .content-main{
+    margin-right: 15px;
+}
+.right-header{
+    display: inline-block;
+    float: right;
+    width: 200px;
+}
+.right-header div{
+    display: inline-block;
+}
+.user-info{
+    float: left;
+}
+.user-info .user-img{
+    width: 20px;
+}
+.user-info .user-name{
+    margin-left: 7px;
+    color: beige;
+}
+.float-tree{
+    height: 500px;
+    width: 230px;
+    cursor: pointer;
+    margin-top: 40px;
+    position: relative;
+}
+.tree-box{
+    position: absolute;
+    width: 250px;
+    height: 630px;
+    border: 1px solid #ddd;
+    background-color: white;
+    overflow-y: scroll;
+}
+.slide-control{
+    position: relative;
+    left: 250px;
+    top: 213px;
+    width: 27px;
+    height: 39px;
+    line-height: 39px;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid #ddd;
+    background-color: #00b1ff;
+}
+.panel-margin-top{
+    margin-top: 10px;
+}
+#bodyList tbody tr:nth-child(even){
+    background-color: rgba(92, 198, 211, 0.2);
+}
+#bodyList tbody tr:nth-child(odd){
+    background-color: rgba(0,177,255,0.2);
+}
+
+
+/* scroll-webkit */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #00b1ff;
+    border: none;
+}
+::-webkit-scrollbar-thumb {
+    background-color:#1F3A49;
+    /*border:1px solid #1B3542;*/
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-corner {
+    background-color:#1F3A49;
+}
+
+
+

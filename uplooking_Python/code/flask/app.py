@@ -70,9 +70,9 @@ def insert_sql():
 
 
 #edit user info api
-@app.route('/edit/<id>',methods=['POST'])
-def edit(id):
-    pass
+@app.route('/edit',methods=['POST'])
+def edit_update():
+    print request.args.get('data')
 
     
 
