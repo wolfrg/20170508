@@ -334,7 +334,7 @@ var public_func = {
                                         <td>'+ valued.ipaddr + ' </td>\
                                         <td>'+ valued.remark + ' </td>\
                                         <td>\
-                                        	<button class="btn btn-xs btn-info" data-for="edit" data-target="#exampleModal" v="'+valued.id+'" data-toggle="modal">编辑</button>\
+                                        	<button class="btn btn-xs btn-info" data-for="edit" data-target="#exampleModal" id="myedit" v="'+valued.id+'" data-toggle="modal">编辑</button>\
                                         	<button class="btn btn-xs btn-danger" v="'+valued.id+'">删除</button>\
                                         </td>\
                                       </tr>';
@@ -401,10 +401,21 @@ var public_func = {
 		// });
 
 
+			
+		
 		
 		
 
 	},
+
+	editbtn:function() {
+		$('.myedit').on('click',function(e) {
+			alert('hhhh');
+		})
+
+	},
+
+	
 
 	// 退出按钮
 	exitBtn: function () {
@@ -420,5 +431,6 @@ var public_func = {
 
 		 // 调退出按钮，因为每个页面都会有退出功能，所以就在公共函数中调用就好
 		_this.exitBtn();
+		_this.editbtn();
 	}
 };

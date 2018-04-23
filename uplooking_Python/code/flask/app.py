@@ -14,7 +14,9 @@ def show_index():
 
     return render_template('index.t.html')
 
-
+@app.route('/mindex')
+def  show_modal():
+    return render_template('m.html')
 
 
 #get right user info table api
