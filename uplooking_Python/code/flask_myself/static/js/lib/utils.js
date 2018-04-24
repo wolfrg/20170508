@@ -5,7 +5,6 @@ var public_func = {
 	
 
 
-
 	// 子菜单点击
 	subMenuClick: function () {
 
@@ -54,19 +53,20 @@ var public_func = {
                 data: 'json',
                 success: function (json) {
                         var str = '';
-                        str += '<thead><tr><th><input type="checkbox"></th><th>编号</th><th>用户名</th><th>职位</th><th>IP地址</th><th>备注</th><th>操作</th></tr></thead>';
+                        str += '<thead><tr><th><input type="checkbox"></th><th>编号</th><th>用户名</th><th>职位</th><th>IP地址</th><th>备注</th><th>操作</th></tr></thead><tbody>';
                         json = JSON.parse(json);
                         $.each(json, function (index, valued) {
-                                str += '<tr><td><input type="checkbox"></td>\
-                                        <td>'+ valued.id + ' </td>\
-                                        <td>'+ valued.username + ' </td>\
-                                        <td>'+ valued.position + ' </td>\
-                                        <td>'+ valued.ipaddr + ' </td>\
-                                        <td>'+ valued.remark + ' </td>\
-                                        <td>\
-                                        	<button class="btn btn-xs btn-info" data-for="edit" data-target="#exampleModal" id="myedit" v="'+valued.id+'" data-toggle="modal">编辑</button>\
-                                        	<button class="btn btn-xs btn-danger" v="'+valued.id+'">删除</button>\
-                                        </td>\
+                                str += '<tr class="js-items-data" data-id="'+valued.id+'" data-username="'+valued.username+'" data-position="'+valued.position+'" data-addr="'+valued.ipaddr+'">\
+											<td><input type="checkbox"></td>\
+											<td>'+ valued.id + ' </td>\
+											<td>'+ valued.username + ' </td>\
+											<td>'+ valued.position + ' </td>\
+											<td>'+ valued.ipaddr + ' </td>\
+											<td class="js-items-remark">'+ valued.remark + ' </td>\
+											<td>\
+												<button class="btn btn-xs btn-info" data-for="edit" data-target="#exampleModal" id="myedit" v="'+valued.id+'" data-toggle="modal">编辑</button>\
+												<button class="btn btn-xs btn-danger" v="'+valued.id+'">删除</button>\
+											</td>\
                                       </tr>';
                         })
                         str += '</tbody>';
@@ -100,6 +100,7 @@ var public_func = {
 
 
 		$.ajax({
+			
 			type:'POST',
 			url:'/addUserInfo',
 			data:data,
@@ -120,32 +121,36 @@ var public_func = {
 			
 		});
 
-
-
-		// var api = '/addUserInfo'
-		// $.post(api,data,function(response) {
-		// 	if(response.code == 0) {
-		// 		location.reload();
-		// 	}
-		// 	modal.modal('hide');
-		// });
-
-
-			
-		
-		
-		
-
 	},
 
-	editbtn:function() {
-		$('.myedit').on('click',function(e) {
-			alert('hhhh');
-		})
+	// 更新编辑的接口
+	editInfo: function(){
+		console.log(2);
+		
+		
 
+
+		$.ajax({
+			type:'POST',
+			url:'/edit_update',
+			data:data,
+			success:function(response) {
+				// console.log(data);
+				if(response == 1) {
+					location.reload();
+					// alert('插入成功！');
+					// $('#exampleModal').modal('hide');
+					$('#exampleModal').hide();
+				}
+
+
+			},
+
+			dataType:"json"
+
+
+		});
 	},
-
-	
 
 	// 退出按钮
 	exitBtn: function () {

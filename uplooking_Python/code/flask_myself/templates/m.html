@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<script src="../static/js/lib/jquery.min.js"></script>
+</head>
+<body>
+	<h1>modal</h1>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h4 class="modal-title" id="myModalLabel">修改信息</h4>
+			</div>
+			<div class="modal-body">
+				学号：<input type="text" name="stuno" id="stuno" /> 
+				密码：<input type="text" name="pass" id="pass"/> 
+				姓名：<input type="text" name="stuname" id="stuname"/> 
+				性别：<input type="radio" name="sex" class="sex" id="man" value="男"/>男
+					  <input type="radio" name="sex" class="sex" id="women" value="女"/>女
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button type="button" class="btn btn-primary" onclick="update()">提交更改</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal -->
+</div>
+<!-- 模态框（Modal）end -->
+
+</body>
+</html>
+<script type="text/javascript">
+	function editInfo(obj) {  
+    var id = $(obj).attr("id");  
+    //获取表格中的一行数据  
+    var stuno = document.getElementById("table").rows[id].cells[0].innerText;  
+    var pass = document.getElementById("table").rows[id].cells[1].innerText;  
+    var name = document.getElementById("table").rows[id].cells[2].innerText;  
+    var sex = document.getElementById("table").rows[id].cells[3].innerText;  
+    //向模态框中传值  
+    $('#stuno').val(stuno);  
+    $('#pass').val(pass);  
+    $('#stuname').val(name);  
+    if (sex == '女') {  
+        document.getElementById('women').checked = true;  
+    } else {  
+        document.getElementById('man').checked = true;  
+    }  
+    $('#update').modal('show');  
+}  
+//提交更改  
+function update() {  
+    //获取模态框数据  
+    var stuno = $('#stuno').val();  
+    var pass = $('#pass').val();  
+    var name = $('#stuname').val();  
+    var sex = $('input:radio[name="sex"]:checked').val();  
+    $.ajax({  
+        type: "post",  
+        url: "update.do",  
+        data: "stuno=" + stuno + "&pass=" + pass + "&name=" + name + "&sex=" + sex,  
+        dataType: 'html',  
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",  
+        success: function(result) {  
+            //location.reload();  
+        }  
+    });  
+}  
+</script>
