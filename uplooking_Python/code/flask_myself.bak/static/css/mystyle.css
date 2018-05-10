@@ -1,0 +1,94 @@
+html, body {
+    /*font: 12px/1.5 "Microsoft YaHei", tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;*/
+    font: 12px/1.5 PingFang SC,Lantinghei SC,Helvetica Neue,Helvetica,Arial,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,STHeitiSC-Light,simsun,\\5B8B\4F53,WenQuanYi Zen Hei,WenQuanYi Micro Hei,'sans-serif';
+    height: 100%;
+    overflow-y: hidden;
+    color: #000;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+.my-head {
+    height:65px;
+    line-height: 65px;
+    background-color: #000000;
+    color:#f5f5f5;
+    padding: 0 10px;
+    font-size:12px;
+}
+
+.my-logo {
+    width:60px;
+}
+
+.my-head div {
+    display: inline-block;
+}
+
+.head-right {
+    float:right;
+}
+
+.user-info img {
+    width:40px;
+}
+
+.exit {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.mytable {
+    /* width:85%; */
+    height: 40px;
+    line-height: 30px;
+    text-align: center;
+} 
+
+.main-menu {
+    background-color: #f5f5f5;
+
+}
+
+.main-area {
+    margin-top: 40px;
+
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
+    background-color: #00b1ff;
+}
+
+
+.col-list-1{
+width: 4%;
+display: inline-block;
+}
+
+.col-list-2, .col-list-3, .col-list-4, .col-list-5, .col-list-6{
+width: 15%;
+display: inline-block;
+}
+
+.row-list-item {
+border-bottom: 1px solid #ddd;
+}
+
+.row-list-item:first-child {
+border-bottom:2px solid #ddd;
+font-weight: bolder;
+}
+
+.row-list-item:nth-child(2) {
+background-color: #f5f5f5;
+}
+
+.row-list-item:nth-child(4) {
+background-color:#e0f0d8;
+}
+
+.row-list-item:nth-child(6) {
+background-color: #daedf7;
+}

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gb2312">
+    <title>活动列表</title>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<script>
+    function show_upload_info(img_url,title,n)
+    {
+        //document.getElementById("img_view"+n).src = img_url;
+        //document.getElementById("img_view"+n).style.display = '';
+        //document.getElementById("img_url"+n).value = img_url;
+        $("#img_url"+n).val(img_url);
+        $("#img_view"+n).attr('src', img_url);
+    }
+
+    function act_resize_img(imgObj, rectWidth, rectHeight, fixIeBug)
+    {
+        try
+        {
+            if(!fixIeBug) fixIeBug = true;
+            //修正在IE运行下的问题
+            if( (imgObj.width==0 || imgObj.height==0) && fixIeBug ) {
+                var timer = setInterval(function(){
+                    act_resize_img(imgObj, rectWidth, rectHeight, false);
+                    clearInterval(timer);
+                }, 1000);
+                return;
+            }
+            var x = imgObj.width>rectWidth ? rectWidth : imgObj.width;
+            var y = imgObj.height>rectHeight ? rectHeight : imgObj.height;
+            var scale    = imgObj.width/imgObj.height;
+
+            if( x>y*scale ) {
+                imgObj.width    = Math.floor(y*scale);
+                imgObj.height    = y;
+            }else {
+                imgObj.width    = x;
+                imgObj.height    = Math.floor(x/scale);
+            }
+            imgObj.style.width = imgObj.width+"px";
+            imgObj.style.height = imgObj.height+"px";
+
+            if (typeof(imgObj.onload)!='undefined')
+            {
+                imgObj.onload=null;
+            }
+        }
+        catch(err)
+        {
+
+        }
+    }
+
+    $(document).ready(function() {
+        // 配置日期事件
+        $("#expire_time").focus(function () {
+            WdatePicker({'dateFmt': 'yyyy-MM-dd HH:mm:ss'});
+        });
+    });
+
+    // 提交表单
+    function delete_info(active_id)
+    {
+        if(confirm("确认删除吗？"))
+        {
+            if(!active_id)
+            {
+                alert('Error！');
+                return false;
+            }
+
+            $.ajax(
+                    {
+                        url: "action/active_action.php",
+                        data:{"active_id":active_id, "act":"del"},
+                        type: "post",
+                        beforeSend:function()
+                        {
+                            $("#tip").html("<span style='color:blue'>正在处理...</span>");
+                            return true;
+                        },
+                        success:function(data)
+                        {
+                          //  var obj = eval('('+data+')');
+                            if(data > 0)
+                            {
+                                alert('操作成功');
+                                $("#tip").html("<span style='color:blueviolet'>恭喜，删除成功！</span>");
+
+
+                                location.reload();
+                            }
+                            else
+                            {
+                                $("#tip").html("<span style='color:red'>失败，请重试</span>");
+                                alert('操作失败');
+                            }
+                        },
+                        error:function()
+                        {
+                            alert('请求出错');
+                        },
+                        complete:function()
+                        {
+                            // $('#tips').hide();
+                        }
+                    });
+
+        }
+
+        // var form_data = new Array();
+        return false;
+    }
+
+    // 编辑表单
+    function get_edit_info(active_id)
+    {
+        if(!active_id)
+        {
+            alert('Error！');
+            return false;
+        }
+        // var form_data = new Array();
+
+        $.ajax(
+                {
+                    url: "/getUserInfo",
+                    data:{"active_id":active_id, "act":"get"},
+                    type: "post",
+                   
+                    success:function(data)
+                    {
+                        if(data)
+                        {
+                            // 解析json数据
+                            var data = data;
+                            // var data_obj = eval("("+data+")");
+                            var data_obj = JSON.parse(data)
+
+                            // 赋值
+                            $("#num").val(data_obj.id);
+                            $("#username").val(data_obj.username);
+                            $("#img_url1").val(data_obj.cover_img_url);
+                            $("#title").val(data_obj.title);
+                            var status = data_obj.status;
+                            if(status == 1)
+                            {
+                                $("#status_on").attr("checked",'checked');
+                            }else{
+                                $("#status_off").attr("checked",'checked');
+                            }
+
+                            $("#tag_name").val(data_obj.tag_name);
+                            $("#remark").val(data_obj.remark);
+                            $("#summary").val(data_obj.summary);
+                            // $("#expire_time").val(data_obj.expire_time);
+                            $("#act").val("edit");
+                            if(data_obj.expire_time == 0)
+                            {
+                                // 隐藏时间框
+                                $("#expire_time").hide();
+                                $("#is_forever").attr("checked","checked");
+                            }
+                            else
+                            {
+                                $("#expire_time").val(data_obj.expire_time);
+                            }
+
+                        }
+                        else
+                        {
+                            $("#tip").html("<span style='color:red'>失败，请重试</span>");
+                          //  alert('操作失败');
+                        }
+                    },
+                    error:function()
+                    {
+                        alert('请求出错');
+                    },
+                    complete:function()
+                    {
+                        // $('#tips').hide();
+                    }
+                });
+
+        return false;
+    }
+
+    //点击 活动是否限时事件
+    function click_forever()
+    {
+        // 不能用attr('checked')获取是否选中，因为返回‘undedied’
+        // var is_check = $('#is_forever').attr('checked');
+
+        // 可以用prop("checked")或is(':checked')来获取是否选中
+        var is_check = $('#is_forever').prop("checked");
+        // alert(is_check);
+        if(is_check)
+        {
+            $("#expire_time").hide();
+            $("#expire_time").val(0);
+        }
+        else
+        {
+            $("#expire_time").show();
+        }
+
+    }
+
+    // 提交表单
+    function check_form()
+    {
+        var title = $.trim($('#title').val());
+        var tag_name = $.trim($('#tag_name').val());
+        var act     = $.trim($('#act').val());
+
+        if(!title)
+        {
+            alert('标题不能为空！');
+            return false;
+        }
+        if(!tag_name)
+        {
+            alert('标签不能为空！');
+            return false;
+        }
+        var form_data = $('#form_data').serialize();
+
+        // 异步提交数据到action/add_action.php页面
+        $.ajax(
+                {
+                    url: "action/active_action.php",
+                    data:{"form_data":form_data,"act":act},
+                    type: "post",
+                    beforeSend:function()
+                    {
+                        $("#tip").html("<span style='color:blue'>正在处理...</span>");
+                        return true;
+                    },
+                    success:function(data)
+                    {
+                        if(data > 0)
+                        {
+
+                            var msg = "添加";
+                            if(act == "edit") msg = "编辑";
+                            $("#tip").html("<span style='color:blueviolet'>恭喜，" +msg+ "成功！</span>");
+                            // document.location.href='system_notice.php'
+                            alert(msg + "OK！");
+                            location.reload();
+                        }
+                        else
+                        {
+                            if(data == -2) alert("标签名不能重复！");
+                            $("#tip").html("<span style='color:red'>失败，请重试</span>");
+                            alert('操作失败');
+                        }
+                    },
+                    error:function()
+                    {
+                        alert('请求出错');
+                    },
+                    complete:function()
+                    {
+                        $('#acting_tips').hide();
+                    }
+                });
+
+        return false;
+    }
+
+    $(function () { $('#addUserModal').on('hide.bs.modal', function () {
+        // 关闭时清空edit状态为add
+        $("#act").val("add");
+        location.reload();
+    })
+    });
+</script>
+<body>
+<div class="container" style="min-width: 1200px;">
+
+<h1>
+    活动列表
+</h1>
+    <form action="active_info_list.php" method="post" class="form">
+    <table class="table table-bordered">
+        <tbody>
+        <tr>
+            <td>标题：<input type="text" name="search_title" value="{search_title}"></td>
+            <td>   <!-- 按钮触发模态框 -->
+                <button class="btn btn-primary btn-sm" data-toggle="modal"  data-target="#addUserModal">
+                    添加活动
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="10" style=" text-align: center; padding: 10px; border: none">
+                <input type="submit" class="btn btn-default" value="搜索" />&nbsp;&nbsp;<a href="active_info_list.php">默认</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
+
+    总数（<b>{total_count}</b>）
+<table class="table table-hover table-bordered" >
+    <thead>
+    <tr>
+        <th>排序</th>
+        <th>显示标题</th>
+        <th>图片链接</th>
+        <th>标签</th>
+        <th>截止时间</th>
+        <th>状态</th>
+        <th>活动详情</th>
+        <th>奖项设置</th>
+        <th>简介</th>
+        <th>备注</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- BEGIN list -->
+    <tr>
+        <td>{order_num}</td>
+        <td>{title}[{active_id}]</td>
+        <td><input readonly="true" value="{cover_img_url}" style="width:150px;"/></td>
+        <td>{tag_name}</td>
+        <td>{expire_time}</td>
+        <td><!-- IF status=="1" --> 上架 <!-- ELSE --><font color="gray">下架</font><!-- ENDIF --></td>
+        <td><a href="active_content_edit.php?active_id={active_id}" target="_blank">内容编辑</a></td>
+        <td><span class="glyphicon glyphicon-cog"></span>&nbsp;<a href="active_prize.php?active_id={active_id}" target="_blank">设置奖项</a></td>
+        <td><textarea  readonly="true"style="width:100px;height:30px;"/>{summary}</textarea></td>
+        <td>{remark}</td>
+        <td>
+            <button type="button" class="btn btn-info" data-toggle="modal" onclick="return get_edit_info({active_id})" data-target="#addUserModal">编辑</button>
+            &nbsp;&nbsp;
+        <button type="button" class="btn btn-danger" onclick="return delete_info({active_id})">删除</button>
+        </td>
+
+    </tr>
+
+    <!-- END list -->
+
+
+    </tbody>
+</table>
+    {page_str} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <!-- 模态框（Modal） -->
+
+    <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        活动详情
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="lastname" class="col-sm-3 control-label">上传封面图片</label>
+                        <div class="col-sm-9">
+                            <!--注意这里的iframe标签-->
+                            <iframe src="upload_img.php" frameborder="0" scrolling="no" width="380px" height="35"></iframe>
+                        </div>
+                    </div>
+                    <form method="post" action="" class="form-horizontal" role="form" id="form_data" onsubmit="return check_form()" style="margin: 20px;">
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-3 control-label">排名</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="order_num" name="order_num" value="{order_num}"
+                                       placeholder="排名">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-3 control-label">标题</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="title" value="{title}" id="title"
+                                       placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-3 control-label">标签</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="tag_name" value="{tag_name}" id="tag_name"
+                                       placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-3 control-label">封面图链接</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="cover_img_url" value="{cover_img_url}" id="img_url1"
+                                       placeholder="图片链接"> <img onload="act_resize_img(this,60,60,true);" id="img_view1" src="" style="margin:3px;"  />
+                                <input type="hidden" id="act" value="add" name="act"/>
+                                <input type="hidden" id="active_id" value="{active_id}" name="active_id"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-3 control-label">截止时间</label>
+                            <div class="col-sm-9">
+                                <!-- 块元素变为内联元素 用display:inline属性即可成一行，块元素用block -->
+                                <input type="text" style="width: 300px;display:inline" class="form-control" name="expire_time" value="{expire_time}" class="Wdate" readonly="readonly" id="expire_time"
+                                       >
+                                <label class="checkbox-inline">
+                                <input type="checkbox" name="is_forever" id="is_forever" value="1" onclick="return click_forever()">不限时
+                                    </label>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname" class="col-sm-3 control-label">状态</label>
+                            <div class="col-sm-9">
+
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="status" id="status_on" value="1"  >上架
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="status" id="status_off" checked="checked" value="0" >下架
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="remark" class="col-sm-3 control-label">简介</label>
+                            <div class="col-sm-9">
+                                <textarea  class="form-control"  name="summary" value="{summary}" id="summary"
+                                       placeholder="活动简介">
+
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="remark" class="col-sm-3 control-label">备注</label>
+                            <div class="col-sm-9">
+                                <textarea  class="form-control"  name="remark" value="{remark}" id="remark"
+                                           placeholder="备注">
+
+                                </textarea>
+                            </div>
+                        </div>
+                   </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        提交
+                    </button><span id="tip"> </span>
+                </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+</body>
+</html>

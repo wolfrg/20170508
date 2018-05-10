@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>monitor</title>
+    <link rel="icon" href="/static/img/monitor-logo.png" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/static/css/font-awesome-ie7.min.css"/>
+    <link rel="stylesheet" href="/static/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/dist/zTreeStyle.css">
+    <link rel="stylesheet" href="/static/css/dist/font-awesome-zTree.css">
+
+    <link rel="stylesheet" href="/static/css/index.css">
+<!--    <link rel="stylesheet" href="/static/css/serviceTree.css"> -->
+    <link rel="stylesheet" href="static/css/serviceTree.css">
+
+
+    <script src="/static/js/lib/jquery.min.js"></script>
+    <script src="/static/js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/lib/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="/static/js/lib/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" src="/static/js/lib/jquery.ztree.exedit.js"></script>
+
+</head>
+<body>
+<div class="guide-head">
+    <img class="sys-logo" src="/static/img/monitor-logo.png" alt="">
+    <div class="right-header">
+        <div class="user-info">
+            <img class="user-img" src="/static/img/monitor-user.svg" alt="">
+            <span class="user-name">王雪君</span>
+        </div>
+        <div class="exit-btn">退出登录</div>
+    </div>
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 js-left-part" >
+            <div class="float-tree">
+                <ul class="tree-box ztree" id="treelist">
+
+                </ul>
+                <div class="slide-control icon-chevron-left js-slide-tree"></div>
+            </div>
+        </div>
+        <div class="col-md-9 js-right-part">
+            <div class="center-main">
+
+                <div class="head-tab">
+                    <ul class="nav nav-pills js-main-tabs">
+                        <li role="presentation" id="domain"  data-menu="1"><a href="/domains/index">域名管理</a></li>
+                        <li role="presentation" id="machine" data-menu="2"><a href="/hosts/index">机器信息</a></li>
+                        <li role="presentation" id="nodemsg" class="active" data-menu="3"><a href="/tree/index">节点信息</a></li>
+                        <li role="presentation" id="deploy" data-menu="3"><a href="/deploy/index">部署系统</a></li>
+                    </ul>
+
+                </div>
+
+                <div id="tags"></div>
+                <div class="content-main">
+                    <ul class="nav nav-tabs machineNav js-sub-tabs">
+                        <li role="presentation" class="active" data-sub="4"><a href="#">菜单1</a></li>
+                        <li role="presentation" data-sub="5" ><a href="#">菜单1</a></li>
+                    </ul>
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+
+
+                        <!-- Table -->
+                        <table class="table" id="bodyList">
+                        </table>
+                    </div>
+                    <!--分页-->
+                    <nav aria-label="Page navigation" style="text-align: right;">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--统一多种模态框-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">添加节点</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+                <button type="button" id="confirmBtn" class="btn btn-primary">ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script src="/static/js/lib/utils.js"></script>
+<script src="static/js/serviceTree.js"></script>

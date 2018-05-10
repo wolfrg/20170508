@@ -1,0 +1,166 @@
+jquery ajax 使用手册
+
+描述：【前台发起的】向【后台索要数据】的操作，称为Request请求。
+说明：因为js原生的数据请求语法结构比较复杂，
+      对非前端人员来说在实际开发过程当中不具备实际操作性。
+      因此我们选择更简便的使用方式--就是使用jq框架中为我们封装好的ajax方式，
+      来执行请求的发送
+语法：在jq框架中使用jQuery.ajax(url,JSONSettings)方法来实现请求的发送和接收。
+      jQuery.ajax(url,json);
+      $.ajax(url,json);
+参数：
+	  (1)请求类型：type
+			参数重要性：必要参数
+            参数值类型：字符串
+            参数可选值：get、post
+
+      (2)请求地址：url
+            参数重要性：必要参数
+            参数值类型：字符串
+			参数说明：如果在json参数中写明本属性，则ajax函数的第一个参数就可以不写
+
+      (3)响应类型：dataType
+            参数重要性：必要参数
+            参数值类型：字符串
+            参数可选值：json、xml、html、jsonp等等..我们只用json
+
+      (4)post数据包：data
+            参数重要性：可选参数，但post请求下一般为必要参数
+            参数值类型：json
+            参数说明：本参数是专门提供给post请求服务的，
+                      因为post请求不会将数据直接拼接在url地址中，
+                      因此通过本属性将数据添加到请求内部。
+
+      (5)回调函数：success、error、beforeSend
+            参数重要性：可选参数
+            参数值类型：函数
+            参数说明：success属性对应的函数会在请求完成后自动发生回调
+                      error属性对应的函数会在请求发生错误后（发生错误指的是网络错误、链接失败或者url地址违法）自动发生回调
+                      beforeSend属性对应的函数会在请求发送出之前自动发生回调
+接口：
+	get：http://wwtliu.com/sxtstu/blueberrypai/getIndexBanner.php
+	post：http://wwtliu.com/sxtstu/blueberrypai/login.php
+	get携带参数：http://wwtliu.com/sxtstu/news/juhenews.php?type=yule&count=30
+例子：
+	(1)get请求无参数案例
+		var getBtn = document.querySelector('.getBtn');
+		getBtn.onclick = function () {
+			$.ajax("http://wwtliu.com/sxtstu/blueberrypai/getIndexBanner.php",{
+				type:"get",
+				dataType:'json',
+				success: function (data) {
+					console.log(data);
+				}
+			});
+		};
+		等价于：
+		var getBtn = document.querySelector('.getBtn');
+		getBtn.onclick = function () {
+			$.ajax({
+				type:"get",
+				url:"http://wwtliu.com/sxtstu/blueberrypai/getIndexBanner.php",
+				dataType:"json",
+				success: function (data) {
+					console.log(data);
+				}
+			});
+		};
+		完整案例：
+		<!DOCTYPE html>
+		<html>
+		<head lang="en">
+			<meta charset="UTF-8">
+			<title>test ajax</title>
+			<script src="js/jquery-1.12.3.min.js"></script>
+			<style>
+				*{  margin: 0; padding:0;  }
+				ul{  list-style: none; padding: 0;  }
+				li{  border: 1px solid black;  }
+			</style>
+		</head>
+		<body>
+		<!--get请求btn-->
+		<button class="getBtn">发送get请求</button>
+		<ul class="getUl"></ul>
+		<script>
+			$('.getBtn').click(function () {
+				$.ajax({
+					type:"get",
+					url:"http://wwtliu.com/sxtstu/blueberrypai/getIndexBanner.php",
+					dataType:"json",
+					success: function (data) {
+						/*根据返回的数据，动态创建页面元素，并加载到页面当中*/
+						for(var i=0; i<data.banner.length; i++){
+							/*根据数据，显示一共有四个li*/
+							/*并且每一个li内部都存在有【标题】【信息】【图片】三个条目*/
+							$('.getUl').append('<li>'+
+									'<p>'+data.banner[i].title+'</p>'+
+									'<p>'+data.banner[i].content+'</p>'+
+									'<img src="'+data.banner[i].img+'"/>'+
+								   '</li>');
+						}
+					}
+				});
+			});
+		</script>
+		</body>
+		</html>
+						 
+	(2)get请求有参数案例	
+		/*get请求带参方式只需要在url后面拼接所需要的参数即可，如下所示。*/
+		$('.getBtn').click(function () {
+        $.ajax({
+            type:"get",
+            url:"http://wwtliu.com/sxtstu/news/juhenews.php?type=yule&count=10",
+            dataType:"json",
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });				 
+	
+	(3)post请求案例
+		<!DOCTYPE html>
+		<html>
+		<head lang="en">
+			<meta charset="UTF-8">
+			<title>test ajax</title>
+			<script src="js/jquery-1.12.3.min.js"></script>
+			<style>
+				*{  margin: 0; padding:0;  }
+				ul{  list-style: none; padding: 0;  }
+				li{  border: 1px solid black;  }
+			</style>
+		</head>
+		<body>
+		<!--post请求btn-->
+		<button class="postBtn">发送post请求</button>
+		<script>
+			$('.postBtn').click(function () {
+				$.ajax({
+					type:"post",
+					url:"http://wwtliu.com/sxtstu/blueberrypai/login.php",
+					dataType:"json",
+					/*如果参数不写，那么请求仍然可以发送成功。只不过返回的结果是请求失败。*/
+					data:{
+						/*post传参部分的属性是固定的，键值也是固定的。。因为只是测试，没有设置开放权限。*/
+						user_id:"iwen@qq.com",
+						password:"iwen123",
+						verification_code:"crfvw"
+					},
+					success:function(data){
+						console.log(data);
+					}
+				});
+			});
+</script>
+</body>
+</html>
+						 
+						 
+						 
+						 
+						 
+						 
+						 
+						 

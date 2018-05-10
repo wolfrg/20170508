@@ -1,0 +1,8 @@
+项目名称：flask_myself.bak
+前端：模态框+拼接表格 实现增删改查
+问题：
+index.js 和 util.js 代码混乱，把增删改查代码提取到index.js
+util.js保留复选框、退出功能公共代码
+
+
+身份证 户口本 结婚证

@@ -20,7 +20,7 @@ def  show_modal():
 
 
 #get right user info table api
-@app.route('/getUserInfo',methods=['GET','POST'])    
+@app.route('/getUserInfo',methods=['GET'])    
 def show_table():
     cursor = db.cursor()
     sql = "SELECT * FROM user_ip_info"
@@ -31,6 +31,7 @@ def show_table():
     data=[]
     for result in results:
         data.append(dict(zip(row_headers,result)))
+        # print data
     return json.dumps(data) 
 
 
@@ -106,9 +107,13 @@ def rename_node(name,id):
     return results
 
 @app.route('/delete',methods=['GET','POST'])
-def update_sql():
+def deleteUserInfo():
     cursor = db.cursor()
-    sql = "delete from user_ip_info where id=2"
+
+    id = request.form.get('id')
+    sql = "delete from user_ip_info where id=%%s"
+    params = id
+    result = cursor.execute(sql,params)
     cursor.execute(sql)
     db.commit()
     return '将要删除这行数据'
