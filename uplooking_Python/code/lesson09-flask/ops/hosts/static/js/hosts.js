@@ -208,6 +208,8 @@ $(function(){
 			var _this = this,
 				hostAry = [];
 
+				console.log('modify')
+
 			modal.find('#exampleModalLabel').text('修改主机信息');
 			// 调用模态框，显示模态框
 				var addTpl = '';

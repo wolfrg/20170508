@@ -11,13 +11,7 @@ app = Flask(__name__)
 # index views
 @app.route('/')
 def show_index():
-
     return render_template('index.t.html')
-
-@app.route('/mindex')
-def  show_modal():
-    return render_template('m.html')
-
 
 #get right user info table api
 @app.route('/getUserInfo',methods=['GET'])    
@@ -84,9 +78,14 @@ def edit_update():
     ipaddr = request.form.get('ipaddr')
     remark = request.form.get('remark')
 
-    sql = ''
-    params = (id,username,position,ipaddr,remark)
+           #UPDATE user_ip_info SET username=1, position=1, ipaddr=1, remark=1 WHERE id=2
+    sql = "UPDATE user_ip_info SET username='%s', position='%s', ipaddr='%s', remark='%s' WHERE id=%s " % (username,position,ipaddr,remark,id)
+    #sql = "update user_ip_info set username=%s,position=%s,ipaddr=%s,remark=%s where id=%s " % (username,position,ipaddr,remark,id)
+    #params = (username,position,ipaddr,remark,id)
 
+    result = cursor.execute(sql)
+    db.commit()
+    return jsonify(result)
     
 
 # rename tree node api
@@ -106,15 +105,15 @@ def rename_node(name,id):
 
     return results
 
-@app.route('/delete',methods=['GET','POST'])
+@app.route('/delete',methods=['POST'])
 def deleteUserInfo():
     cursor = db.cursor()
 
     id = request.form.get('id')
-    sql = "delete from user_ip_info where id=%%s"
+    sql = "delete from user_ip_info where id= %s"
     params = id
     result = cursor.execute(sql,params)
-    cursor.execute(sql)
+    # cursor.execute(sql)
     db.commit()
     return '将要删除这行数据'
 
@@ -124,6 +123,9 @@ def deleteUserInfo():
 #     return render_template('ajax.html')
 #     #pass
 
+@app.route('/mindex')
+def  show_modal():
+    return render_template('m.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5001,debug=True)
