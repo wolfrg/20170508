@@ -202,6 +202,42 @@ $(function () {
 
 
         },
+
+        // 搜索
+        searchFun:function(){
+            var _this = this;
+            
+            var str = '';
+            str += '<thead><tr><th><input type="checkbox"></th><th>编号</th><th>用户名</th><th>职位</th><th>IP地址</th><th>备注</th><th>操作</th></tr></thead><tbody>';
+            // data = JSON.parse(data);
+            $.each(data, function (index, valued) {
+                var userid = valued.id;
+                var username = valued.username;
+                var position = valued.position;
+                var ipaddr = valued.ipaddr;
+                var remark = valued.remark
+
+                str += '<tr class="js-items-data" data-id="' + userid + '" data-username="' + valued.username + '" data-position="' + valued.position + '" data-addr="' + valued.ipaddr + '">\
+                                            <td><input type="checkbox"></td>\
+                                            <td>'+ userid + ' </td>\
+                                            <td>'+ username + ' </td>\
+                                            <td>'+ position + ' </td>\
+                                            <td>'+ ipaddr + ' </td>\
+                                            <td class="js-items-remark">'+ remark + ' </td>\
+                                            <td>\
+                                                <button class="btn btn-xs btn-info" data-for="modify" data-target="#exampleModal"   data-toggle="modal" userid="'+ userid +'"  username=" '+ username +'" position="'+ position +'" ipaddr="'+ ipaddr+'" remark="'+ remark +'">编辑</button>\
+                                                <button class="btn btn-xs btn-danger" data-for="delete" data-target="#exampleModal" id="delete"  data-toggle="modal" userid="' + userid+ '">删除</button>\
+                                            </td>\
+                                      </tr>';
+            })
+            str += '</tbody>';
+
+            $('#bodyList').html(str)
+
+            var params =  {};
+            params.ss = $('#').val()
+
+        },
         
         modifyFun:function(modal,button){
             var _this = this;

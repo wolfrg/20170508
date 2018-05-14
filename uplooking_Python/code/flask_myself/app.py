@@ -17,7 +17,7 @@ def show_index():
 @app.route('/getUserInfo',methods=['GET'])    
 def show_table():
     cursor = db.cursor()
-    sql = "SELECT * FROM user_ip_info"
+    sql = "SELECT * FROM user_ip_info ORDER BY id ASC"
     cursor.execute(sql)
     row_headers=[x[0] for x in cursor.description]
     results = cursor.fetchall()
@@ -126,6 +126,10 @@ def deleteUserInfo():
 @app.route('/mindex')
 def  show_modal():
     return render_template('m.html')
+
+@app.route('/test')
+def test():
+    return render_template('test.html')    
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5001,debug=True)
