@@ -78,7 +78,7 @@ def edit_update():
     ipaddr = request.form.get('ipaddr')
     remark = request.form.get('remark')
 
-           #UPDATE user_ip_info SET username=1, position=1, ipaddr=1, remark=1 WHERE id=2
+    #UPDATE user_ip_info SET username=1, position=1, ipaddr=1, remark=1 WHERE id=2
     sql = "UPDATE user_ip_info SET username='%s', position='%s', ipaddr='%s', remark='%s' WHERE id=%s " % (username,position,ipaddr,remark,id)
     #sql = "update user_ip_info set username=%s,position=%s,ipaddr=%s,remark=%s where id=%s " % (username,position,ipaddr,remark,id)
     #params = (username,position,ipaddr,remark,id)
@@ -109,14 +109,36 @@ def rename_node(name,id):
 def deleteUserInfo():
     cursor = db.cursor()
 
-    id = request.form.get('id')
-    sql = "delete from user_ip_info where id= %s"
-    params = id
-    result = cursor.execute(sql,params)
-    # cursor.execute(sql)
+    uid = request.form.get('id')
+    
+    uid = int(uid)
+    sql = "delete from user_ip_info where id='%d'" % (uid)
+    # params = uid
+    # print params
+    # print sql
+    result = cursor.execute(sql)
     db.commit()
-    return '将要删除这行数据'
+    return 'result'
 
+
+@app.route('/search',methods=['GET'])
+def search():
+
+    cursor = db.cursor()
+    username = request.args.get('username')
+    print username
+    sql = "select * from user_ip_info where username like '%s'" % username
+    # sql = "select * from user_ip_info where username like '冯瑞钢'"
+
+    cursor.execute(sql)
+    row_headers=[x[0] for x in cursor.description]
+    results = cursor.fetchall()
+    print results
+    data=[]
+    for result in results:
+        data.append(dict(zip(row_headers,result)))
+    print data
+    return json.dumps(data) 
 
 # @app.route('/ajax.html',methods=['GET','POST'])
 # def myajax():

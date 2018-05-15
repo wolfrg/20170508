@@ -206,18 +206,38 @@ $(function () {
         // 搜索
         searchFun:function(){
             var _this = this;
-            
-            var str = '';
-            str += '<thead><tr><th><input type="checkbox"></th><th>编号</th><th>用户名</th><th>职位</th><th>IP地址</th><th>备注</th><th>操作</th></tr></thead><tbody>';
-            // data = JSON.parse(data);
-            $.each(data, function (index, valued) {
-                var userid = valued.id;
-                var username = valued.username;
-                var position = valued.position;
-                var ipaddr = valued.ipaddr;
-                var remark = valued.remark
 
-                str += '<tr class="js-items-data" data-id="' + userid + '" data-username="' + valued.username + '" data-position="' + valued.position + '" data-addr="' + valued.ipaddr + '">\
+            //第一步，根据搜索关键字先去请求
+                //1.获取关键字，定义一个点击事件
+                //2.点击搜索按钮，请求接口
+
+            //第二步，把请求到的结果展示出来
+            console.log('searchFun')
+
+            
+
+            $('#search_btn').on('click',function(e){
+               
+                var params = {};
+                params.username = $('#search_input').val()
+                
+                
+                console.log(params.username)
+                $.get('/search',params,function(response){
+                    
+
+                    console.log(response)
+                    var str = '';
+                    str += '<thead><tr><th><input type="checkbox"></th><th>编号</th><th>用户名</th><th>职位</th><th>IP地址</th><th>备注</th><th>操作</th></tr></thead><tbody>';
+                    // data = JSON.parse(data);
+                    $.each(response, function (index, valued) {
+                        var userid = valued.id;
+                        var username = valued.username;
+                        var position = valued.position;
+                        var ipaddr = valued.ipaddr;
+                        var remark = valued.remark
+
+                    str += '<tr class="js-items-data" data-id="' + userid + '" data-username="' + valued.username + '" data-position="' + valued.position + '" data-addr="' + valued.ipaddr + '">\
                                             <td><input type="checkbox"></td>\
                                             <td>'+ userid + ' </td>\
                                             <td>'+ username + ' </td>\
@@ -229,13 +249,15 @@ $(function () {
                                                 <button class="btn btn-xs btn-danger" data-for="delete" data-target="#exampleModal" id="delete"  data-toggle="modal" userid="' + userid+ '">删除</button>\
                                             </td>\
                                       </tr>';
+                    })
+                    str += '</tbody>';
+
+                    $('#bodyList').html(str)
+
+                },'json')
             })
-            str += '</tbody>';
-
-            $('#bodyList').html(str)
-
-            var params =  {};
-            params.ss = $('#').val()
+            
+        
 
         },
         
@@ -298,7 +320,7 @@ $(function () {
             submitbtn.off('click').on('click',function(e){
                 var params = {};
                 params.id = infos.userid.nodeValue;
-                console.log(params.id)
+                typeof(params.id)
                 $.post('/delete',params,function(res){
                     location.reload();
                     modal.modal('hide');
@@ -311,6 +333,7 @@ $(function () {
             var _this = this;
             _this.getTableData2(); //调用显示表格数据的函数
             _this.modalShowJudge();
+            _this.searchFun();
 
         }
     };
