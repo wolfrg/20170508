@@ -17,7 +17,7 @@ def show_index():
 @app.route('/getUserInfo',methods=['GET'])    
 def show_table():
     cursor = db.cursor()
-    sql = "SELECT * FROM user_ip_info ORDER BY id ASC"
+    sql = "SELECT * FROM user_ip_info ORDER BY id ASC limit 10"
     cursor.execute(sql)
     row_headers=[x[0] for x in cursor.description]
     results = cursor.fetchall()
@@ -26,26 +26,8 @@ def show_table():
     for result in results:
         data.append(dict(zip(row_headers,result)))
         # print data
-    return json.dumps(data) 
-
-
-#get left tree table api
-@app.route('/tree/all',methods=['GET','POST'])
-def get_tree_all():
-    cursor = db.cursor()
-    sql = "SELECT * FROM map_tree"
-    cursor.execute(sql)
-    row_headers = [x[0] for x in cursor.description]
-    results = cursor.fetchall()
-
-    data = []
-    for result in results:
-        data.append(dict(zip(row_headers,result)))
     return json.dumps(data)
-
-
-
-
+    db.close()
 
 #add data api
 @app.route('/addUserInfo',methods=['POST'])
@@ -59,11 +41,14 @@ def insert_sql():
     ipaddr = request.form.get('ipaddr')
     remark = request.form.get('remark')
 
-    sql = "insert into user_ip_info (id,username,position,ipaddr,remark) values (%s,%s,%s,%s,%s)"
+    # sql = "insert into user_ip_info (id,username,position,ipaddr,remark) values (%s,%s,%s,%s,%s)"
+    sql = "insert into user_ip_info values  (%s,%s,%s,%s,%s)"
     params = (id,username,position,ipaddr,remark)
     result = cursor.execute(sql,params)
     db.commit()
     return  jsonify(result)
+
+    db.close()
 
 
 #edit user info api
@@ -78,32 +63,13 @@ def edit_update():
     ipaddr = request.form.get('ipaddr')
     remark = request.form.get('remark')
 
-    #UPDATE user_ip_info SET username=1, position=1, ipaddr=1, remark=1 WHERE id=2
-    sql = "UPDATE user_ip_info SET username='%s', position='%s', ipaddr='%s', remark='%s' WHERE id=%s " % (username,position,ipaddr,remark,id)
-    #sql = "update user_ip_info set username=%s,position=%s,ipaddr=%s,remark=%s where id=%s " % (username,position,ipaddr,remark,id)
-    #params = (username,position,ipaddr,remark,id)
+    sql = "UPDATE user_ip_info SET username='%s', position='%s', ipaddr='%s', remark='%s' WHERE id=%s" % (username,position,ipaddr,remark,id)   
 
     result = cursor.execute(sql)
     db.commit()
     return jsonify(result)
-    
-
-# rename tree node api
-@app.route('/node/rename',methods=["POST"])
-def rename_node(name,id):
-    id = request.form.get('id')
-    name = request.form.get('name')
-
-    sql = 'update map_server set name=%s where id=%s'
-    params = (id,name)
-
-    cursor = db.cursor()
-    results = cursor.execute(sql,params)
-    cursor.commit()
-    cursor.close()
     db.close()
-
-    return results
+    
 
 @app.route('/delete',methods=['POST'])
 def deleteUserInfo():
@@ -112,14 +78,14 @@ def deleteUserInfo():
     uid = request.form.get('id')
     
     uid = int(uid)
-    sql = "delete from user_ip_info where id='%d'" % (uid)
+    sql = "delete from user_ip_info where id='%d'" % uid
     # params = uid
     # print params
     # print sql
     result = cursor.execute(sql)
     db.commit()
     return 'result'
-
+    db.close()
 
 @app.route('/search',methods=['GET'])
 def search():
@@ -127,7 +93,7 @@ def search():
     cursor = db.cursor()
     username = request.args.get('username')
     print username
-    sql = "select * from user_ip_info where username like '%s'" % username
+    sql = "select * from user_ip_info where username LIKE '%s'" % username
     # sql = "select * from user_ip_info where username like '冯瑞钢'"
 
     cursor.execute(sql)
@@ -138,7 +104,9 @@ def search():
     for result in results:
         data.append(dict(zip(row_headers,result)))
     print data
-    return json.dumps(data) 
+    return json.dumps(data)
+
+    db.close()
 
 # @app.route('/ajax.html',methods=['GET','POST'])
 # def myajax():

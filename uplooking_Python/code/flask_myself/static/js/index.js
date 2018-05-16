@@ -148,7 +148,7 @@ $(function () {
                 }else if(actionType == 'delete'){
                     _this.deleteUserInfo(modal,button);
                 }else if(actionType == 'modify'){
-                    console.log('modify');
+                    // console.log('modify');
                     _this.modifyFun(modal,button);
                 }
 
@@ -188,7 +188,7 @@ $(function () {
                 var params = {};
 
                 params.id = $('#num').val();
-                params.username = $('#username').val();
+                params.username = $('#username').val().trim();
                 params.position = $('#position').val();
                 params.ipaddr = $('#ipaddr').val();
                 params.remark = $('#remark').val();
@@ -212,21 +212,21 @@ $(function () {
                 //2.点击搜索按钮，请求接口
 
             //第二步，把请求到的结果展示出来
-            console.log('searchFun')
+            // console.log('searchFun')
 
             
 
             $('#search_btn').on('click',function(e){
                
                 var params = {};
-                params.username = $('#search_input').val()
+                params.username = $('#search_input').val().trim()
                 
                 
-                console.log(params.username)
+                // console.log(params.username)
                 $.get('/search',params,function(response){
                     
-
-                    console.log(response)
+                    
+                    // console.log(response)
                     var str = '';
                     str += '<thead><tr><th><input type="checkbox"></th><th>编号</th><th>用户名</th><th>职位</th><th>IP地址</th><th>备注</th><th>操作</th></tr></thead><tbody>';
                     // data = JSON.parse(data);
@@ -251,8 +251,9 @@ $(function () {
                                       </tr>';
                     })
                     str += '</tbody>';
-
+                    
                     $('#bodyList').html(str)
+                
 
                 },'json')
             })
@@ -270,7 +271,7 @@ $(function () {
 
                 addTpl += '<div class="form-group">\
                             <label class="control-label">编号:</label>\
-                            <input type="text" class="form-control" name="num" id="num">\
+                            <input type="text" class="form-control" name="num" id="num" readOnly="true">\
                         </div>\
                         <div>\
                             <label  class="control-label">用户名:</label>\
@@ -296,10 +297,10 @@ $(function () {
             submitbtn.off('click').on('click',function(e){
                 var params = {};
                 params.id = infos.userid.nodeValue;
-                params.username = $('#username').val();
-                params.position = $('#position').val();
-                params.ipaddr = $('#ipaddr').val();
-                params.remark = $('#remark').val();
+                params.username = $('#username').val().trim();
+                params.position = $('#position').val().trim();
+                params.ipaddr = $('#ipaddr').val().trim();
+                params.remark = $('#remark').val().trim();
 
 
                 $.post('/edit_update',params,function(res){
