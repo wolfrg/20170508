@@ -90,6 +90,8 @@ def deleteUserInfo():
 @app.route('/search',methods=['GET'])
 def search():
 
+    #如果想做任意字段的查询，就做一个判断
+    
     cursor = db.cursor()
     username = request.args.get('username')
     print username
