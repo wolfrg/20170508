@@ -1,15 +1,6 @@
 $(function () {
 
     var monitor = {
-
-        //菜单切换
-        menuClick:function(){
-            
-        },
-
-
-
-
         //$.ajax的方式
         showInfo: function () {
             $.ajax({

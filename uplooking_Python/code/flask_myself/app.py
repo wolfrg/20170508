@@ -29,6 +29,21 @@ def show_table():
     return json.dumps(data)
     db.close()
 
+@app.route('/getHostInfo',methods=['GET'])
+def show_host():
+    cursor = db.cursor()
+    sql = "SELECT * FROM n_hosts ORDER BY id ASC LIMIT 10"
+    cursor.execute(sql)
+    row_headers=[x[0] for x in cursor.description]
+    results = cursor.fetchall()
+
+    data = []
+
+    for result in results:
+        data.append(dict(zip(row_headers,result)))
+    return json.dumps(data)
+    db.close()
+            
 #add data api
 @app.route('/addUserInfo',methods=['POST'])
 def insert_sql():
@@ -114,6 +129,15 @@ def search():
 # def myajax():
 #     return render_template('ajax.html')
 #     #pass
+
+@app.route('/host/nei')
+def nHost():
+    return render_template('nei_host.html')
+
+
+@app.route('/host/wai')
+def wHost():
+    return render_template('wai_host.html')
 
 @app.route('/mindex')
 def  show_modal():
