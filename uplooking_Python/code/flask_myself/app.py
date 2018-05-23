@@ -29,8 +29,8 @@ def show_table():
     return json.dumps(data)
     db.close()
 
-@app.route('/getHostInfo',methods=['GET'])
-def show_host():
+@app.route('/get_nHostInfo',methods=['GET'])
+def show_nhost():
     cursor = db.cursor()
     sql = "SELECT * FROM n_hosts ORDER BY id ASC LIMIT 10"
     cursor.execute(sql)
@@ -43,7 +43,23 @@ def show_host():
         data.append(dict(zip(row_headers,result)))
     return json.dumps(data)
     db.close()
-            
+
+
+@app.route('/get_wHostInfo',methods=['GET'])
+def show_whost():
+    cursor = db.cursor()
+    sql = "SELECT * FROM w_hosts ORDER BY id ASC LIMIT 10"
+    cursor.execute(sql)
+    row_headers=[x[0] for x in cursor.description]
+    results = cursor.fetchall()
+
+    data = []
+
+    for result in results:
+        data.append(dict(zip(row_headers,result)))
+    return json.dumps(data)
+    db.close()
+
 #add data api
 @app.route('/addUserInfo',methods=['POST'])
 def insert_sql():

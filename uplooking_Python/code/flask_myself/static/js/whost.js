@@ -8,7 +8,7 @@
         getTableData: function () {
             var _this = this;
                 // data = {};
-            $.get('/get_nHostInfo', function (data) {
+            $.get('/get_wHostInfo', function (data) {
         
                 // console.log('getTableData',data)
                 if (data) {
