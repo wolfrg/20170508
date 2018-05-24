@@ -82,6 +82,30 @@ def insert_sql():
     db.close()
 
 
+#add host api
+@app.route('/addHostInfo',methods=['POST'])
+def insert_nhost():
+    
+    cursor = db.cursor()
+
+    # id = request.form.get('id')
+    sn_number = request.form.get('sn_number')
+    host_modal = request.form.get('host_modal')
+    peizhi = request.form.get('peizhi')
+    wan_ip = request.form.get('wan_ip')
+    lan_ip = request.form.get('lan_ip')
+    host_location = request.form.get('host_location')
+
+    print sn_number,host_modal,peizhi,wan_ip,lan_ip,host_location
+    sql = "insert into n_hosts(sn_number,host_modal,peizhi,wan_ip,lan_ip,host_location) values (%s,%s,%s,%s,%s,%s)"
+    # sql = "insert into n_hosts values  (%s,%s,%s,%s,%s,%s)"
+    params = (sn_number,host_modal,peizhi,wan_ip,lan_ip,host_location)
+    result = cursor.execute(sql,params)
+    db.commit()
+    return  jsonify(result)
+
+    db.close()
+
 #edit user info api
 @app.route('/edit_update',methods=['POST'])
 def edit_update():
@@ -146,11 +170,12 @@ def search():
 #     return render_template('ajax.html')
 #     #pass
 
+#view
 @app.route('/host/nei')
 def nHost():
     return render_template('nei_host.html')
 
-
+#view
 @app.route('/host/wai')
 def wHost():
     return render_template('wai_host.html')
